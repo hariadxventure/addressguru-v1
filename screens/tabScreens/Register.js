@@ -1,14 +1,12 @@
-import { Text, View } from 'react-native'
-import React, { Component } from 'react'
+import { View, Text } from 'react-native'
+import React from 'react'
 
-export class Register extends Component {
-  render() {
-    return (
-      <View>
-        <Text>Register screen</Text>
-      </View>
-    )
-  }
+const Register = () => {
+  return (
+    <View>
+      <Text>Register Screen</Text>
+    </View>
+  )
 }
 
 export default Register

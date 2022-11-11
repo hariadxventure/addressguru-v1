@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Home = () => {
+const PostAd = () => {
   return (
     <View>
-      <Text>Home Screen</Text>
+      <Text>PostAd Screen</Text>
     </View>
   )
 }
 
-export default Home
+export default PostAd
