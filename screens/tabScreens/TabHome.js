@@ -17,7 +17,7 @@ const TabHome = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: { backgroundColor: "white", height: 60 },
-        tabBarLabelStyle: { marginBottom: 5 },
+        tabBarLabelStyle: { marginBottom: 5, fontSize:12 },
       }}
     >
       <Tab.Screen
@@ -38,7 +38,7 @@ const TabHome = () => {
         name="PostAd"
         component={PostAd}
         options={{
-          tabBarIcon: () => <Icon name="plus" color="gray" size={24} style={{position: 'absolute', backgroundColor: 'white', borderRadius: 100, top: -15, padding:20}}/>,
+          tabBarIcon: () => <Icon name="plus" color="red" size={30}  style={{position: 'absolute', backgroundColor: 'white', borderRadius: 100, top: -15,padding: 15 ,paddingTop:10,}}/>,
         }}
       />
       <Tab.Screen

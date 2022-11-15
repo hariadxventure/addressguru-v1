@@ -1,5 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import About from './screens/drawerScreens/About';
@@ -20,9 +21,28 @@ export default function App() {
     <NavigationContainer >
       <Drawer.Navigator
       initialRouteName='Home'
+      screenOptions={{
+        drawerStyle:{
+          // backgroundColor: "#003e7a",
+          fontSize: 30
+        },
+        drawerLabelStyle:{
+          fontSize: 18,
+          padding:0
+        },
+        // drawerActiveBackgroundColor: "white",
+        // drawerActiveTintColor: "#003e7a",
+        // drawerInactiveTintColor: 'white'
+      }}
       drawerContent={props=><Sidebar {...props}/>}
       >
-        <Drawer.Screen name='TabHome' component={TabHome}/>
+        <Drawer.Screen name='TabHome' component={TabHome}
+        options={{
+          drawerLabel: "Home",
+          headerTitle: "Address Guru",
+          drawerIcon:({color})=><Icon name='home' size={30} color={color}/>
+        }}
+        />
         <Drawer.Screen name='About' component={About}/>
         <Drawer.Screen name='Contact' component={ContactUs}/>
         <Drawer.Screen name='Partner' component={BecomeAPartner}/>
