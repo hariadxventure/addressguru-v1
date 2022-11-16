@@ -9,7 +9,7 @@ const Home = () => {
         <Text>Seacrch bar</Text>
       </View>
       <View style={s.sec2}>
-        <Text>Carousel menu</Text>
+        <View style={s.carouselBg}></View>
         <CarouselMenu/>
       </View>
       <View style={s.sec3}>
@@ -39,8 +39,21 @@ const s = StyleSheet.create({
     height: 60
   },
   sec2:{
-    // backgroundColor: 'orangered',
-    // height: 
+    // backgroundColor: 'gray',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    width: '100%',
+    paddingBottom:20,
+    paddingTop: 20
+  },
+  carouselBg:{
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 300,
+    backgroundColor: 'orange'
   },
   sec3:{
     backgroundColor: 'green',
