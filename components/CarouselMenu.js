@@ -2,12 +2,13 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-nati
 import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { carouselData } from "../data/carouselData";
-import Carousel from "react-native-snap-carousel";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 import apiData from "../methods/getApi";
 const { width, height } = Dimensions.get("window");
 
 let cWidth = width - 20
 const CarouselMenu = (props) => {
+  const [activeSlide, setActiveSlide] = useState(0);
   const [entries, setEntries] = useState(carouselData);
   useEffect(()=>{
     async function getData() {
@@ -56,6 +57,7 @@ const CarouselMenu = (props) => {
       <Carousel
         data={entries}
         renderItem={renderItem}
+        onSnapToItem={index => setActiveSlide(index)}
         containerCustomStyle={{
           paddingTop: 5,
           backgroundColor: "white", 
@@ -67,10 +69,26 @@ const CarouselMenu = (props) => {
           // borderRadius: 30,
           display: 'flex', 
           justifyContent: 'center',
-           alignItems: 'center'}}
+           alignItems: 'center'
+          }}
         sliderWidth= {cWidth}
+        pagingEnabled={true}
         itemHeight={height}
         itemWidth={cWidth}
+      />
+      <Pagination
+       dotsLength={entries.length}
+       containerStyle={{backgroundColor: 'white', marginTop: -10}}
+       dotStyle={{
+        width: 10,
+        height: 10,
+        borderRadius: 5,
+        marginHorizontal: 2,
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+       }}
+       activeDotIndex={activeSlide}
+       inactiveDotScale={0.6}
+       inactiveDotOpacity={0.4}
       />
     </View>
   );
@@ -80,11 +98,13 @@ const styles = StyleSheet.create({
   singleItem: {
     width: (cWidth)/4.3,
     margin: 2,
-    marginBottom: 12,
+    marginBottom: 6,
+    marginTop: 10,
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    // borderWidth: 2,
+    height: 72,
+    // borderWidth: 1,
     // borderColor: 'black'
   },
   slideContainer:{
