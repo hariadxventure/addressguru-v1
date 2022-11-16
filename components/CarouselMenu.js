@@ -17,7 +17,8 @@ const CarouselMenu = (props) => {
       while (data.length) {
         arr.push(data.splice(0,16))
       }
-      console.log("dataApi= ",arr)
+      // setEntries(arr)
+      // console.log("dataApi= ",arr)
     }
     getData()
   },[])
@@ -25,7 +26,13 @@ const CarouselMenu = (props) => {
     return(
       <TouchableOpacity>
         <View  style={styles.singleItem}>
-         <Icon name={el.icon} color={el.colors} size={35} />
+         <Icon 
+          // name={el.icon.replace('fa-solid fa-microphone','microphone')}
+          // color={el.colors.replace('#0000', '#000000')} 
+          name={el.icon}
+          color={el.colors} 
+          size={35} 
+          />
          <Text style={{ textAlign: "center" }}>{el.name}</Text>
        </View>
       </TouchableOpacity>

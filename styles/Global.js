@@ -21,6 +21,9 @@ export const s = StyleSheet.create({
     tc:{
         textAlign:'center'
     },
+    cWh:{
+        color: 'white'
+    },
     fwb:{
         fontWeight: 'bold'
     },
@@ -89,4 +92,13 @@ export const s = StyleSheet.create({
       paddingLeft: 10,
       color: "#616060"
     },
+    container:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    row:{
+        display: 'flex',
+        flexDirection: "row"
+    }
   });
