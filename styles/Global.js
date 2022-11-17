@@ -36,6 +36,9 @@ export const s = StyleSheet.create({
     fwn:{
         fontWeight: 'normal'
     },
+    pd5:{
+        padding: 5,
+    },
     pd12:{
         padding:12
     },
