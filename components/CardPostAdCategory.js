@@ -12,7 +12,6 @@ const { width, height } = Dimensions.get("window");
 
 const CardPostAdCategory = (props) => {
   const { pWidth, iconName, bgCol, title, tagline } = props;
-  console.log("width= ",pWidth)
   return (
     <TouchableOpacity>
       <View style={[ s.container,styles.wrapper, {width: width*pWidth, backgroundColor: bgCol }]}>

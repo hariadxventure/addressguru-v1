@@ -3,6 +3,9 @@ const {width, height} = Dimensions.get('window')
 
 
 export const s = StyleSheet.create({
+    br20:{
+        borderRadius: 20
+    },
     f28:{
         fontSize:28
     },
@@ -23,6 +26,12 @@ export const s = StyleSheet.create({
     },
     cWh:{
         color: 'white'
+    },
+    bgColWh:{
+        backgroundColor: "white"
+    },
+    bgColOr:{
+        backgroundColor: "orange"
     },
     fwb:{
         fontWeight: 'bold'
@@ -60,7 +69,12 @@ export const s = StyleSheet.create({
     pdt15:{
         paddingTop: 15
     },
-    
+    m10:{
+        margin: 10
+    },
+    mla:{
+        marginLeft: 'auto'
+    },
     bottom: {
       paddingBottom: 20,
     },

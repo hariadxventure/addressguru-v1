@@ -7,7 +7,7 @@ import { s } from '../../styles/Global'
 const PostAd = () => {
   return (
     <ScrollView>
-      <View style={[s.pd5]}>
+      <View style={[s.pd5,{paddingTop:7}]}>
         <View style={[styles.container]}>
           <CardPostAdCategory {...postAdHomeData[0]}/>
           <CardPostAdCategory {...postAdHomeData[1]}/>

@@ -15,9 +15,9 @@ const CarouselMenu = (props) => {
       const {data} = await apiData("https://www.addressguru.in/api/categories") 
       let arr = []
       while (data.length) {
-        arr.push(data.splice(0,16))
+        arr.push(data.splice(0,20))
       }
-      // setEntries(arr)
+      setEntries(arr)
       // console.log("dataApi= ",arr)
     }
     getData()
@@ -31,9 +31,9 @@ const CarouselMenu = (props) => {
           // color={el.colors.replace('#0000', '#000000')} 
           name={el.icon}
           color={el.colors} 
-          size={35} 
+          size={32} 
           />
-         <Text style={{ textAlign: "center" }}>{el.name}</Text>
+         <Text style={{ textAlign: "center", fontSize:12 }}>{el.name}</Text>
        </View>
       </TouchableOpacity>
     )
@@ -76,7 +76,7 @@ const CarouselMenu = (props) => {
           // borderRadius: 30,
           display: 'flex', 
           justifyContent: 'center',
-           alignItems: 'center'
+           alignItems: 'flex-start'
           }}
         sliderWidth= {cWidth}
         pagingEnabled={true}
@@ -87,14 +87,14 @@ const CarouselMenu = (props) => {
        dotsLength={entries.length}
        containerStyle={{backgroundColor: 'white', marginTop: -10}}
        dotStyle={{
-        width: 10,
-        height: 10,
-        borderRadius: 5,
-        marginHorizontal: 2,
+        width: 13,
+        height: 4,
+        // borderRadius: 5,
+        marginHorizontal: -3,
         backgroundColor: 'rgba(0, 0, 0, 0.75)',
        }}
        activeDotIndex={activeSlide}
-       inactiveDotScale={0.6}
+       inactiveDotScale={0.7}
        inactiveDotOpacity={0.4}
       />
     </View>
