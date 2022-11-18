@@ -8,6 +8,8 @@ import Ad1 from "../../components/Ad1";
 import { s } from "../../styles/Global";
 import Ad2 from "../../components/Ad2";
 import Ad4 from "../../components/Ad4";
+import Ad3 from "../../components/Ad3";
+import CardMp2 from "../../components/CardMp2";
 const Home = () => {
   return (
     <ScrollView>
@@ -40,11 +42,13 @@ const Home = () => {
       <View style={[s.container, s.pdt10, s.pdb10]}>
         <Ad2 />
       </View>
-      <View style={styles.sec5}>
-        <Text>Ad 2</Text>
-      </View>
       <View style={styles.sec6}>
         <Text>MarketPlace 2</Text>
+        <Ad3/>
+        <View>
+          <CardMp2/>
+          <CardMp2/>
+        </View>
       </View>
       <View style={[s.container, s.pd5]}>
        <Ad4 />
@@ -99,13 +103,9 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow",
     height: 200,
   },
-  sec5: {
-    backgroundColor: "blue",
-    height: 400,
-  },
   sec6: {
     backgroundColor: "gray",
-    height: 500,
+    height: 300,
   },
 });
 

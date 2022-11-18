@@ -14,6 +14,7 @@ import PrivacyPolicy from './screens/drawerScreens/PrivacyPolicy';
 import Sidebar from './screens/drawerScreens/Sidebar';
 import Home from './screens/tabScreens/Home';
 import TabHome from './screens/tabScreens/TabHome';
+import LogoTitle from './components/LogoTitle';
 
 const Drawer = createDrawerNavigator()
 export default function App() {
@@ -30,6 +31,9 @@ export default function App() {
           fontSize: 18,
           padding:0
         },
+        headerTitle:(props)=><LogoTitle {...props}/>,
+        // headerStyle:{backgroundColor: 'red'},
+        // headerTitleStyle:{textAlign: 'center' }
         // drawerActiveBackgroundColor: "white",
         // drawerActiveTintColor: "#003e7a",
         // drawerInactiveTintColor: 'white'
@@ -39,7 +43,7 @@ export default function App() {
         <Drawer.Screen name='TabHome' component={TabHome}
         options={{
           drawerLabel: "Home",
-          headerTitle: "Address Guru",
+          // headerTitle: "Address Guru",
           drawerIcon:({color})=><Icon name='home' size={30} color={color}/>
         }}
         />

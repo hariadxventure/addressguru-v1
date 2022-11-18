@@ -110,12 +110,10 @@ export const s = StyleSheet.create({
       color: "#616060"
     },
     container:{
-        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
     },
     row:{
-        display: 'flex',
         flexDirection: "row"
     }
   });
