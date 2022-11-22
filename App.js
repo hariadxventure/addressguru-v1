@@ -32,7 +32,10 @@ export default function App() {
           padding:0
         },
         headerTitle:(props)=><LogoTitle {...props}/>,
-        // headerStyle:{backgroundColor: 'red'},
+        headerStyle:{
+          // backgroundColor: 'red',
+           height: 75
+          },
         // headerTitleStyle:{textAlign: 'center' }
         // drawerActiveBackgroundColor: "white",
         // drawerActiveTintColor: "#003e7a",

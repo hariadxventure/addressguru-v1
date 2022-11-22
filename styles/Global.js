@@ -33,6 +33,12 @@ export const s = StyleSheet.create({
     bgColOr:{
         backgroundColor: "orange"
     },
+    bgColgry:{
+        backgroundColor: "gray"
+    },
+    bgColYel:{
+        backgroundColor: "yellow"
+    },
     fwb:{
         fontWeight: 'bold'
     },
@@ -63,11 +69,17 @@ export const s = StyleSheet.create({
     pdb15:{
         paddingBottom: 15
     },
+    pdt5:{
+        paddingTop:5
+    },
     pdt10:{
         paddingTop:10
     },
     pdt15:{
         paddingTop: 15
+    },
+    pdh5:{
+        paddingHorizontal: 5
     },
     m10:{
         margin: 10
@@ -115,5 +127,17 @@ export const s = StyleSheet.create({
     },
     row:{
         flexDirection: "row"
+    },
+    sb: {
+        justifyContent: 'space-between'
+    },
+    se: {
+        justifyContent: 'space-evenly'
+    },
+    sa: {
+        justifyContent: 'space-around'
+    },
+    wrp:{
+        flexWrap: 'wrap'
     }
   });

@@ -45,6 +45,13 @@ const TabHome = () => {
         name="MarketPlace"
         component={MarketPlace}
         options={{
+          headerShadowVisible: false,
+          headerStyle:{
+            backgroundColor: 'white',
+            elevation: 0,
+            shadowOpacity: 0,
+            borderBottomWidth: 0,
+          },
           tabBarIcon: () => (
             <Icon name="shopping-cart" color="gray" size={24} />
           ),
