@@ -15,6 +15,8 @@ import Sidebar from './screens/drawerScreens/Sidebar';
 import Home from './screens/tabScreens/Home';
 import TabHome from './screens/tabScreens/TabHome';
 import LogoTitle from './components/LogoTitle';
+import { s } from './styles/Global';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Drawer = createDrawerNavigator()
 export default function App() {
@@ -32,6 +34,13 @@ export default function App() {
           padding:0
         },
         headerTitle:(props)=><LogoTitle {...props}/>,
+        headerRight:(props)=>(
+          <TouchableOpacity>
+            <View style={{paddingRight: 20}}>
+              <Text style={[s.f15,{color: '#2DCDFF'}]}>Select City</Text>
+            </View>
+          </TouchableOpacity>
+        ),
         headerStyle:{
           // backgroundColor: 'red',
            height: 75

@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react'
 import { marketplaceCatData } from '../data/marketplaceCatData'
 import SingleScrollMenu from './SingleScrollMenu'
 import apiData from '../methods/getApi'
-const ScrollMenu = () => {
+const ScrollMenu = ({url}) => {
   const [mpCat, setMpCat]= useState([])
   useEffect(()=>{
     async function getData() {
-      const {data} = await apiData("https://www.addressguru.in/api/marketplace/categories") 
+      const {data} = await apiData(url) 
       setMpCat(data)
       // console.log("dataApi= ",data)
     }

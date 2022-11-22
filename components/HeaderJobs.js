@@ -7,7 +7,7 @@ import ScrollMenu from './ScrollMenu'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 
-const HeaderMarketPlace = ({scrollY}) => {
+const HeaderJobs = ({scrollY}) => {
   return (
     <View style={[styles.container]}>
       <View style={[s.row]}>
@@ -20,7 +20,7 @@ const HeaderMarketPlace = ({scrollY}) => {
         </TouchableOpacity>
       </View >
       <View style={[s.pd5,s.pdt5]}>
-        <ScrollMenu url={"https://www.addressguru.in/api/marketplace/categories"}/>
+        <ScrollMenu url={"https://www.addressguru.in/api/job/categories"}/>
       </View>
     </View>
   )
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HeaderMarketPlace
+export default HeaderJobs

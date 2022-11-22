@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
     logo:{
         width: 160,
         flex:1,
-        borderWidth: 1,
-        borderColor: 'black',
+        // borderWidth: 1,
+        // borderColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 0,
-        marginLeft: 'auto'
+        marginLeft: 15
     },
     img:{
         width: 130,
