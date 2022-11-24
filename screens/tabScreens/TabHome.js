@@ -7,6 +7,7 @@ import Leads from "./Leads";
 import PostAd from "./PostAd";
 import MarketPlace from "./MarketPlace";
 import Home from "./Home";
+import ToLet from "./ToLet";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,13 +35,7 @@ const TabHome = () => {
           tabBarIcon: () => <Icon name="bell" color="gray" size={24} />,
         }}
       />
-      <Tab.Screen
-        name="PostAd"
-        component={PostAd}
-        options={{
-          tabBarIcon: () => <Icon name="plus" color="red" size={30}  style={{position: 'absolute', backgroundColor: 'white', borderRadius: 100, top: -15,padding: 15 ,paddingTop:10,}}/>,
-        }}
-      />
+      
       <Tab.Screen
         name="MarketPlace"
         component={MarketPlace}
@@ -62,6 +57,20 @@ const TabHome = () => {
         component={Jobs}
         options={{
           tabBarIcon: () => <Icon name="search" color="gray" size={24} />,
+        }}
+      />
+      <Tab.Screen
+        name="ToLet"
+        component={ToLet}
+        options={{
+          tabBarIcon: ()=><Icon name="home" color="gray" size={24}/>
+        }}
+      />
+      <Tab.Screen
+        name="PostAd"
+        component={PostAd}
+        options={{
+          tabBarIcon: () => <Icon name="plus" color="green" size={30}  style={{position: 'absolute', backgroundColor: 'white', borderRadius: 100, top: -25,padding: 15 ,paddingTop:10,}}/>,
         }}
       />
     </Tab.Navigator>

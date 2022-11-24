@@ -7,6 +7,7 @@ import apiData from "../../methods/getApi";
 import HeaderMarketPlace from "../../components/HeaderMarketPlace";
 import HeaderJobs from "../../components/HeaderJobs";
 import CardJobs from "../../components/CardJobs";
+import CardJobsNew from "../../components/CardJobsNew";
 
 const Jobs = () => {
   const [jobData, setJobData] = useState([])
@@ -34,7 +35,7 @@ const Jobs = () => {
         }
       }}>
         <View style={[s.row, s.wrp, s.se, s.pd5, {paddingBottom: 80, backgroundColor: '#EBF5FF'}]}>
-          {jobData.map(item=><CardJobs key={item.id} {...item}/>)}
+          {jobData.map(item=><CardJobsNew key={item.id} {...item}/>)}
         </View>
       </ScrollView>
     </View>
