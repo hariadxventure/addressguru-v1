@@ -4,18 +4,18 @@ import CardProduct from "../../components/CardProduct";
 import { s } from "../../styles/Global";
 import Ad2 from "../../components/Ad2";
 import apiData from "../../methods/getApi";
+import { productsData } from "../../data/ProductsData";
 import HeaderMarketPlace from "../../components/HeaderMarketPlace";
 
 const MarketPlace = () => {
-  const [prodData, setProdData] = useState([])
+  const [prodData, setProdData] = useState(productsData.records)
   const [scrollY, setScrollY] = useState(0)
  
   useEffect(()=>{
     async function getData(){
       const {data} = await apiData("https://www.addressguru.in/api/marketplace/products")
-      // setProdData(data)
       setProdData(data?.records)
-      // console.log("data==================> ", data.records)
+      console.log("data==================> ", data.records)
     }
     getData()
   },[])

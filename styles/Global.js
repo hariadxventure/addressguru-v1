@@ -6,6 +6,10 @@ export const s = StyleSheet.create({
     br20:{
         borderRadius: 20
     },
+    br1b:{
+        borderWidth: 1,
+        borderColor:"black"
+    },
     f28:{
         fontSize:28
     },
@@ -80,6 +84,9 @@ export const s = StyleSheet.create({
     },
     pdh5:{
         paddingHorizontal: 5
+    },
+    w100p:{
+        width: '100%'
     },
     m10:{
         margin: 10

@@ -9,7 +9,7 @@ const CardProduct = (props) => {
     <View style={styles.container}>
       <TouchableOpacity>
         <View style={[styles.imgWrapper]}>
-          <Image  style={{height: 140, width: "100%", borderTopRightRadius:5, borderTopLeftRadius:5, resizeMode: 'contain'}} source={{uri:"https://www.addressguru.in/images/"+images[0]}}/>
+          <Image  style={styles.img} source={{uri:"https://www.addressguru.in/images/"+images[0]}}/>
         </View>
         <View style={[styles.content, s.pd5]}>
           <Text style={[s.pd5, {height: 60}]}>{title}</Text>
@@ -41,7 +41,11 @@ const styles = StyleSheet.create({
     // backgroundColor: "blue"
   },
   img:{
-
+    height: 140,
+    width: "100%",
+    borderTopRightRadius:5, 
+    borderTopLeftRadius:5, 
+    resizeMode: 'contain'
   },
   content:{
 

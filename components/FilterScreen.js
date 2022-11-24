@@ -1,10 +1,26 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-const FilterScreen = () => {
+const FilterScreen = (props) => {
   return (
-    <View style={[{}]}>
-      <Text>FilterScreen</Text>
+    <View style={[styles.container]}>
+      <View style={[]}>
+        <View>
+          <Icon name='filter' size={15}/>
+          <Text>Filters</Text>
+        </View>
+        <TouchableOpacity onPress={props.closeSheet}>
+          <Text>
+            <Icon name='times' size={22}/>
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <View style={[{}]}>
+        <ScrollView>
+          <Text>FilterScreen</Text>
+        </ScrollView>
+      </View>
     </View>
   )
 }

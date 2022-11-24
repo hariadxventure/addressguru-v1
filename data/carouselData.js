@@ -16,12 +16,12 @@ export const carouselData =[
       { colors: "#8EB443", icon: "stethoscope", id: 14, name: "Clinic" },
       { colors: "#26848E", icon: "graduation-cap", id: 15, name: "Coaching Institute" },
       { colors: "#4285F4", icon: "book", id: 16, name: "Colleges" },
+      { colors: "#3E90B4", icon: "laptop", id: 17, name: "Computer Rent" },
+      { colors: "#55D3D8", icon: "desktop", id: 18, name: "Computer Training" },
+      { colors: "#1C2F4E", icon: "truck", id: 19, name: "Courier Service" },
+      { colors: "#FF0000", icon: "hospital-o", id: 20, name: "COVID-19 Centres" },
     ],
     [
-        { colors: "#3E90B4", icon: "laptop", id: 17, name: "Computer Rent" },
-        { colors: "#55D3D8", icon: "desktop", id: 18, name: "Computer Training" },
-        { colors: "#1C2F4E", icon: "truck", id: 19, name: "Courier Service" },
-        { colors: "#FF0000", icon: "hospital-o", id: 20, name: "COVID-19 Centres" },
         { colors: "#238AE6", icon: "industry", id: 21, name: "Dealer" },
         { colors: "#FBCA25", icon: "industry", id: 22, name: "Distributor" },
         { colors: "#E62119", icon: "music", id: 23, name: "DJ Services" },
@@ -34,8 +34,6 @@ export const carouselData =[
         { colors: "#5D6A6F", icon: "arrows-h", id: 30, name: "GYM" },
         { colors: "#046DCB", icon: "ravelry", id: 64, name: "Hand-Craft" },
         { colors: "#21D68C", icon: "tasks", id: 31, name: "Hobby Classes" },
-    ],
-    [
         { colors: "#238AE6", icon: "cogs", id: 32, name: "Home Services" },
         { colors: "#DE0514", icon: "hospital-o", id: 33, name: "Hospital" },
         { colors: "#408D00", icon: "hotel", id: 34, name: "Hostel" },
@@ -44,6 +42,8 @@ export const carouselData =[
         { colors: "#FFFF00", icon: "shopping-bag", id: 37, name: "Jewellery Shop" },
         { colors: "#801D1D", icon: "gavel", id: 38, name: "Lawyer" },
         { colors: "#F68401", icon: "beer", id: 39, name: "Liquor Store" },
+    ],
+    [
         { colors: "#ffad60", icon: "paint-brush", id: 40, name: "Makeup Artist" },
         { colors: "#000661", icon: "industry", id: 41, name: "Manufacturer" },
         { colors: "#E61D74", icon: "mobile", id: 42, name: "Mobile Shop" },
@@ -52,8 +52,6 @@ export const carouselData =[
         { colors: "#FF5733", icon: "home", id: 45, name: "Pet Shop" },
         { colors: "#9E8DC0", icon: "camera", id: 46, name: "Photographer" },
         { colors: "#4CAF50", icon: "cog", id: 47, name: "Plumber Service" },
-    ],
-    [
         { colors: "#0C2052", icon: "user-circle-o", id: 48, name: "Portfolio" },
         { colors: "#5B462D", icon: "industry", id: 49, name: "Private Companies" },
         { colors: "#A769A4", icon: "home", id: 50, name: "Real Estate" },
@@ -66,6 +64,8 @@ export const carouselData =[
         { colors: "#F77B25", icon: "home", id: 57, name: "Temples" },
         { colors: "#4CAF50", icon: "th-large", id: 58, name: "Tiffin Services" },
         { colors: "#950D14", icon: "ticket", id: 59, name: "Tour & Travel" },
+    ],
+    [
         { colors: "#302028", icon: "area-chart", id: 60, name: "Trekking" },
         { colors: "#006E4E", icon: "address-card", id: 61, name: "Tuition Points" },
         { colors: "#32313E", icon: "university", id: 62, name: "Universities" },
