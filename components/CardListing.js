@@ -1,10 +1,11 @@
-import { View, Text, Button, Image, StyleSheet } from "react-native";
+import { View, Text, Button, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
 const CardListing = () => {
   return (
+    <TouchableOpacity style={{elevation: 2}}>
     <View style={styles.wrapper}>
-      <View>
+      <View style={[{height: '100%', width: '30%'}]}>
         <Image></Image>
       </View>
       <View>
@@ -37,13 +38,14 @@ const CardListing = () => {
         </View>
       </View>
     </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
     wrapper:{
-        width: '95%',
-        height: 250
+        width: '98%',
+        height: 250,
     }
 })
 export default CardListing;

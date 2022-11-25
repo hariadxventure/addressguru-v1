@@ -31,9 +31,6 @@ export const s = StyleSheet.create({
     cWh:{
         color: 'white'
     },
-    cgry:{
-        color: 'gray'
-    },
     bgColWh:{
         backgroundColor: "white"
     },

@@ -15,7 +15,7 @@ const MarketPlace = () => {
     async function getData(){
       const {data} = await apiData("https://www.addressguru.in/api/marketplace/products")
       setProdData(data?.records)
-      console.log("data==================> ", data.records)
+      // console.log("data==================> ", data.records)
     }
     getData()
   },[])

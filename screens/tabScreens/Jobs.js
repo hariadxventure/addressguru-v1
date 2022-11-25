@@ -16,7 +16,9 @@ const Jobs = () => {
   useEffect(()=>{
     async function getData(){
       const {data} = await apiData("https://www.addressguru.in/api/jobs")
-      // setJobData(data)
+      // let arr = []
+      // arr.push(data.records[0])
+      // setJobData(arr)
       setJobData(data?.records)
       // console.log("data==================> ", data.records)
     }
