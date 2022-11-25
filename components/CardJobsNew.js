@@ -19,14 +19,21 @@ const CardJobsNew = (props) => {
   } = props;
 
   let time = Date.now()
+  // static time diff
+  let time_diff = calcTime(created_at)
   useEffect(()=>{
-    const timeId = setInterval(() => {
-      let time_diff = calcTime(created_at)
-      // let time_diff = calcTime1(time)
-      setCtime(time_diff)
-    }, 1000);
-    return () => clearInterval(timeId)
+    setCtime(time_diff)
   },[])
+
+  //dynamic time diff
+  // useEffect(()=>{
+  //   const timeId = setInterval(() => {
+  //     // let time_diff = calcTime(created_at)
+  //     let time_diff = calcTime1(time)
+  //     setCtime(time_diff)
+  //   }, 1000);
+  //   return () => clearInterval(timeId)
+  // },[])
  
   return (
     <View style={[styles.container]}>
@@ -76,7 +83,7 @@ const CardJobsNew = (props) => {
             </View>
             <View>
               <Text style={[s.cgray]}>
-                {salary_from}-{salary_to}
+              ₹{salary_from}{" "}-{" "}₹{salary_to}/<Text style={{fontSize: 8, fontWeight: 'bold'}}>Monthly</Text>
               </Text>
             </View>
           </View>

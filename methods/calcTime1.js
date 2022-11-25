@@ -33,10 +33,8 @@ const calcTime = (created_at)=>{
     return fhrs + " hours ago"
   } else if(fmins>0){
     return fmins + " minutes ago"
-  } else if(fsecs>0){
-    return fsecs + " seconds ago"
   } else {
-    return "0 seconds ago"
+    return " few seconds ago"
   }
 }
 export default calcTime

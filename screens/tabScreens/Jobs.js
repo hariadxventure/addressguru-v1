@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView, Animated } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Animated, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import CardProduct from "../../components/CardProduct";
 import { s } from "../../styles/Global";
@@ -11,25 +11,40 @@ import CardJobsNew from "../../components/CardJobsNew";
 
 const Jobs = () => {
   const [jobData, setJobData] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
   const [scrollY, setScrollY] = useState(0)
- 
-  useEffect(()=>{
+
+  const fetchData = ()=>{
     async function getData(){
+      setRefreshing(true)
       const {data} = await apiData("https://www.addressguru.in/api/jobs")
-      // let arr = []
-      // arr.push(data.records[0])
-      // setJobData(arr)
+      setRefreshing(false)
       setJobData(data?.records)
-      // console.log("data==================> ", data.records)
     }
     getData()
+  } 
+  useEffect(()=>{
+   fetchData()
   },[])
+ 
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
       <View>
         <HeaderJobs scrollY={scrollY}/>
       </View>
-      <ScrollView onScroll={e=>{
+      <FlatList
+        data={jobData}
+        renderItem={({item})=><CardJobsNew {...item}/>}
+        keyExtractor={item=>item.id}
+        onRefresh={()=>fetchData()}
+        refreshing={refreshing}
+        contentContainerStyle={{
+          paddingBottom: 110,
+          paddingTop: 7,
+          alignItems: 'center'
+        }}
+      />
+      {/* <ScrollView onScroll={e=>{
         // setScrollY(e.nativeEvent.contentOffset.y)
         setScrollY(0)
         if (e.nativeEvent.contentOffset.y>10) {
@@ -39,7 +54,7 @@ const Jobs = () => {
         <View style={[s.row, s.wrp, s.se, s.pd5, {paddingBottom: 80, backgroundColor: '#EBF5FF'}]}>
           {jobData.map(item=><CardJobsNew key={item.id} {...item}/>)}
         </View>
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 };
