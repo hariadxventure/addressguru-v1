@@ -20,6 +20,7 @@ const CardJobsNew = (props) => {
 
   let time = Date.now()
   // static time diff
+  // let time_diff = calcTime1(time)
   let time_diff = calcTime(created_at)
   useEffect(()=>{
     setCtime(time_diff)

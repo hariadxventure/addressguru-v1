@@ -4,10 +4,8 @@ import CardProduct from "../../components/CardProduct";
 import { s } from "../../styles/Global";
 import Ad2 from "../../components/Ad2";
 import apiData from "../../methods/getApi";
-import HeaderMarketPlace from "../../components/HeaderMarketPlace";
-import HeaderJobs from "../../components/HeaderJobs";
-import CardJobs from "../../components/CardJobs";
 import CardJobsNew from "../../components/CardJobsNew";
+import CommonHeader from "../../components/CommonHeader";
 
 const Jobs = () => {
   const [jobData, setJobData] = useState([])
@@ -30,7 +28,7 @@ const Jobs = () => {
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
       <View>
-        <HeaderJobs scrollY={scrollY}/>
+        <CommonHeader scrollY={scrollY} menuUrl="https://www.addressguru.in/api/job/categories"/>
       </View>
       <FlatList
         data={jobData}

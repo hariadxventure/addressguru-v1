@@ -1,13 +1,19 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { s } from "../styles/Global";
+import calcTime from "../methods/calcTime";
 
 const CardProduct = (props) => {
-  const {images, title, amount, city, created_at,id }= props
-  // const imgSrc = `https://www.addressguru.in/api/marketplace/product?id:${id}`
+  const {images, title, amount, city, created_at }= props
+  const [ctime, setCtime] = useState("");
+
+  const time_diff = calcTime(created_at)
+  useEffect(()=>{
+    setCtime(time_diff)
+  },[])
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity >
         <View style={[styles.imgWrapper]}>
           <Image  style={styles.img} source={{uri:"https://www.addressguru.in/images/"+images[0]}}/>
         </View>
@@ -15,8 +21,8 @@ const CardProduct = (props) => {
           <Text style={[s.pd5, {height: 60}]}>{title}</Text>
           <Text style={[s.pdh5, {fontWeight:"700"}]}>{amount?"₹ "+amount:"Contact for price"}</Text>
           <View style={[s.row, s.sb]}>
-            <Text style={[ s.pd5]}>{city}</Text>
-            {/* <Text style={[ s.pd5]}>{created_at}</Text> */}
+            <Text style={[ s.pd5,s.f12]}>{city}</Text>
+            <Text style={[ s.pd5,s.f12]}>{time_diff}</Text>
           </View>
         </View>
        </TouchableOpacity>
@@ -32,7 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     // borderWidth: 1,
     backgroundColor: 'white',
-    width: '45%',
+    width: '48%',
     marginVertical: 6
   },
   imgWrapper:{

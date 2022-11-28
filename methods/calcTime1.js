@@ -1,4 +1,4 @@
-const calcTime = (created_at)=>{
+const calcTime1 = (created_at)=>{
  
   let cTime = Date.now()
   
@@ -34,7 +34,7 @@ const calcTime = (created_at)=>{
   } else if(fmins>0){
     return fmins + " minutes ago"
   } else {
-    return " few seconds ago"
+    return "few seconds ago"
   }
 }
-export default calcTime
+export default calcTime1

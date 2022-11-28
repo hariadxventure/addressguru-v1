@@ -5,7 +5,7 @@ import { s } from "../../styles/Global";
 import Ad2 from "../../components/Ad2";
 import apiData from "../../methods/getApi";
 import { productsData } from "../../data/ProductsData";
-import HeaderMarketPlace from "../../components/HeaderMarketPlace";
+import CommonHeader from "../../components/CommonHeader";
 
 const MarketPlace = () => {
   const [prodData, setProdData] = useState(productsData.records)
@@ -28,7 +28,7 @@ const MarketPlace = () => {
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
       <View>
-        <HeaderMarketPlace scrollY={scrollY}/>
+        <CommonHeader scrollY={scrollY} menuUrl="https://www.addressguru.in/api/marketplace/categories"/>
       </View>
       <FlatList
         key={"_"}
@@ -38,9 +38,7 @@ const MarketPlace = () => {
         onRefresh={()=>fetchData()}
         refreshing={refreshing}
         contentContainerStyle={[s.pd5,{paddingBottom:110}]}
-        columnWrapperStyle={{
-          justifyContent: 'space-evenly'
-        }}
+        columnWrapperStyle={[s.se]}
         numColumns={2}
       />
       {/* <ScrollView onScroll={e=>{

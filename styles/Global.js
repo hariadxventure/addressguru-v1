@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
+// import { Colors } from "./Colors";
 const {width, height} = Dimensions.get('window')
-
 
 export const s = StyleSheet.create({
     br20:{
@@ -24,6 +24,9 @@ export const s = StyleSheet.create({
     },
     f18:{
         fontSize:18
+    },
+    f12:{
+        fontSize:12
     },
     tc:{
         textAlign:'center'
@@ -57,6 +60,9 @@ export const s = StyleSheet.create({
     },
     pd5:{
         padding: 5,
+    },
+    pd10:{
+        padding: 10
     },
     pd12:{
         padding:12
