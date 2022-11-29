@@ -2,19 +2,19 @@ import React from "react";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Jobs from "./Jobs";
-import Leads from "./Leads";
-import PostAd from "./PostAd";
-import MarketPlace from "./MarketPlace";
-import Home from "./Home";
-import ToLet from "./ToLet";
+import PostAdStack from "../tabScreens/PostAdStack";
+import ToLetStack from "../tabScreens/ToLetStack";
+import JobsStack from "../tabScreens/JobsStack";
+import LeadsStack from "../tabScreens/LeadsStack";
+import HomeStack from "../tabScreens/HomeStack";
+import MarketPlaceStack from "../tabScreens/MarketPlaceStack";
 
 const Tab = createBottomTabNavigator();
 
 const TabHome = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeStack"
       screenOptions={{
         headerShown: false,
         tabBarStyle: { backgroundColor: "white", height: 60 },
@@ -22,24 +22,27 @@ const TabHome = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeStack"
+        component={HomeStack}
         options={{
+          title: "Home",
           tabBarIcon: () => <Icon name="home" color="gray" size={24} />,
         }}
       />
       <Tab.Screen
-        name="Leads"
-        component={Leads}
+        name="LeadsStack"
+        component={LeadsStack}
         options={{
+          title: "Leads",
           tabBarIcon: () => <Icon name="bell" color="gray" size={24} />,
         }}
       />
       
       <Tab.Screen
-        name="MarketPlace"
-        component={MarketPlace}
+        name="MarketPlaceStack"
+        component={MarketPlaceStack}
         options={{
+          title: "MarketPlace",
           headerShadowVisible: false,
           headerStyle:{
             backgroundColor: 'white',
@@ -53,23 +56,26 @@ const TabHome = () => {
         }}
       />
       <Tab.Screen
-        name="Jobs"
-        component={Jobs}
+        name="JobsStack"
+        component={JobsStack}
         options={{
+          title: "Jobs",
           tabBarIcon: () => <Icon name="search" color="gray" size={24} />,
         }}
       />
       <Tab.Screen
-        name="ToLet"
-        component={ToLet}
+        name="ToLetStack"
+        component={ToLetStack}
         options={{
+          title: "ToLet",
           tabBarIcon: ()=><Icon name="home" color="gray" size={24}/>
         }}
       />
       <Tab.Screen
-        name="PostAd"
-        component={PostAd}
+        name="PostAdStack"
+        component={PostAdStack}
         options={{
+          title: "PostAd",
           tabBarIcon: () => <Icon name="plus" color="green" size={30}  style={{position: 'absolute', backgroundColor: 'white', borderRadius: 100, top: -25,padding: 15 ,paddingTop:10,}}/>,
         }}
       />

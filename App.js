@@ -12,11 +12,11 @@ import OurPlans from './screens/drawerScreens/OurPlans';
 import PostingRules from './screens/drawerScreens/PostingRules';
 import PrivacyPolicy from './screens/drawerScreens/PrivacyPolicy';
 import Sidebar from './screens/drawerScreens/Sidebar';
-import Home from './screens/tabScreens/Home';
-import TabHome from './screens/tabScreens/TabHome';
+import Home from './screens/stackScreens/Home';
 import LogoTitle from './components/LogoTitle';
 import { s } from './styles/Global';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import TabHome from './screens/drawerScreens/TabHome';
 
 const Drawer = createDrawerNavigator()
 export default function App() {

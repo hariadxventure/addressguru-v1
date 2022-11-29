@@ -1,11 +1,21 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import PostAd from '../stackScreens/PostAd'
+import Search from '../stackScreens/Search'
 
+const Stack = createNativeStackNavigator()
 const PostAdStack = () => {
   return (
-    <View>
-      <Text>PostAdStack</Text>
-    </View>
+    <Stack.Navigator
+      initialRouteName='PostAd'
+      screenOptions={{
+      headerShown: false
+      }}
+    >
+      <Stack.Screen name='Home' component={PostAd}/>
+      <Stack.Screen name='Search' component={Search}/>
+    </Stack.Navigator>
   )
 }
 
