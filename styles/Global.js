@@ -46,6 +46,9 @@ export const s = StyleSheet.create({
     bgColWh:{
         backgroundColor: "white"
     },
+    bgColGrn:{
+        backgroundColor: "green"
+    },
     bgColOr:{
         backgroundColor: "orange"
     },
@@ -99,6 +102,9 @@ export const s = StyleSheet.create({
     },
     pdh5:{
         paddingHorizontal: 5
+    },
+    pdh7:{
+        paddingHorizontal: 7
     },
     pdh10:{
         paddingHorizontal: 10
