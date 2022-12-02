@@ -35,7 +35,7 @@ const CardListing = (props) => {
     setLdigit(prev=>(parseInt(avgRating.toPrecision(2).split('.')[1])))
     setArr1(prev=>(new Array(fdigit).fill(1)))
     setArr2(prev=>(new Array(ldigit).fill(1)))
-  },[])
+  },[fdigit, ldigit, avgRating])
 
   return (
     <View style={[styles.container, s.row]}>
