@@ -7,12 +7,12 @@ import apiData from "../../methods/getApi";
 import CardJobsNew from "../../components/CardJobsNew";
 import CommonHeader from "../../components/CommonHeader";
 
-const Jobs = () => {
+const Jobs = (props) => {
   const [jobData, setJobData] = useState([])
   const [refreshing, setRefreshing] = useState(false)
   const [scrollY, setScrollY] = useState(0)
 
-  const fetchData = ()=>{
+  const getJobsData = ()=>{
     async function getData(){
       setRefreshing(true)
       const {data} = await apiData("https://www.addressguru.in/api/jobs")
@@ -22,7 +22,7 @@ const Jobs = () => {
     getData()
   } 
   useEffect(()=>{
-   fetchData()
+   getJobsData()
   },[])
  
   return (
@@ -32,9 +32,9 @@ const Jobs = () => {
       </View>
       <FlatList
         data={jobData}
-        renderItem={({item})=><CardJobsNew {...item}/>}
+        renderItem={({item})=><CardJobsNew {...props} {...item}/>}
         keyExtractor={item=>item.id}
-        onRefresh={()=>fetchData()}
+        onRefresh={()=>getJobsData()}
         refreshing={refreshing}
         contentContainerStyle={{
           paddingBottom: 110,

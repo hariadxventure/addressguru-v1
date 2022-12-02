@@ -10,7 +10,7 @@ import Ad2 from "../../components/Ad2";
 import Ad4 from "../../components/Ad4";
 import Ad3 from "../../components/Ad3";
 import CardMp2 from "../../components/CardMp2";
-const Home = () => {
+const Home = (props) => {
   return (
     <ScrollView>
       <View style={styles.marketPlace1}>
@@ -34,7 +34,7 @@ const Home = () => {
       </View>
       <View style={styles.sec2}>
         <View style={styles.carouselBg}></View>
-        <CarouselMenu />
+        <CarouselMenu {...props}/>
       </View>
       <View style={[s.container, s.pdt10, s.pdb10]}>
         <Ad1 />

@@ -10,6 +10,7 @@ let cWidth = width - 20
 const CarouselMenu = (props) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [entries, setEntries] = useState(carouselData);
+  const {route, navigation} = props
   useEffect(()=>{
     async function getData() {
       const {data} = await apiData("https://www.addressguru.in/api/categories") 
@@ -18,13 +19,19 @@ const CarouselMenu = (props) => {
         arr.push(data.splice(0,20))
       }
       setEntries(arr)
-      // console.log("dataApi= ",arr)
     }
     getData()
   },[])
+
+  const handlePress = (data)=>{
+    navigation.navigate('ListingPage',{
+      catName: data.name,
+      city: "dehradun"
+    })
+  }
   const CarouselItem = ({el})=>{
     return(
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>handlePress(el)}>
         <View  style={styles.singleItem}>
          <Icon 
           // name={el.icon.replace('fa-solid fa-microphone','microphone')}
@@ -39,7 +46,7 @@ const CarouselMenu = (props) => {
     )
   }
 
-  const renderItem = ({item, index})=>{
+  const renderItem = ({item, index,})=>{
     return(
     <View style={styles.slide}>
       {item.map(el=>(

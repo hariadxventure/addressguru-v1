@@ -7,12 +7,12 @@ import apiData from "../../methods/getApi";
 import { productsData } from "../../data/ProductsData";
 import CommonHeader from "../../components/CommonHeader";
 
-const MarketPlace = () => {
+const MarketPlace = (props) => {
   const [prodData, setProdData] = useState(productsData.records)
   const [refreshing, setRefreshing] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   
-  const fetchData = ()=>{
+  const getProducts = ()=>{
     async function getData(){
       setRefreshing(true)
       const {data} = await apiData("https://www.addressguru.in/api/marketplace/products")
@@ -23,7 +23,7 @@ const MarketPlace = () => {
   }
 
   useEffect(()=>{
-    fetchData()
+    getProducts()
   },[])
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
@@ -33,9 +33,9 @@ const MarketPlace = () => {
       <FlatList
         key={"_"}
         data={prodData}
-        renderItem={({item})=><CardProduct {...item}/>}
+        renderItem={({item})=><CardProduct  {...item} {...props}/>}
         keyExtractor={item=>"_"+item.id}
-        onRefresh={()=>fetchData()}
+        onRefresh={()=>getProducts()}
         refreshing={refreshing}
         contentContainerStyle={[s.pd5,{paddingBottom:110}]}
         columnWrapperStyle={[s.se]}

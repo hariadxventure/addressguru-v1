@@ -3,6 +3,9 @@ import { StyleSheet, Dimensions } from "react-native";
 const {width, height} = Dimensions.get('window')
 
 export const s = StyleSheet.create({
+    br10:{
+        borderRadius: 10
+    },
     br20:{
         borderRadius: 20
     },
@@ -21,6 +24,12 @@ export const s = StyleSheet.create({
     },
     f15:{
         fontSize: 15
+    },
+    f16:{
+        fontSize: 16
+    },
+    f17:{
+        fontSize: 17
     },
     f18:{
         fontSize:18
@@ -90,6 +99,12 @@ export const s = StyleSheet.create({
     },
     pdh5:{
         paddingHorizontal: 5
+    },
+    pdh10:{
+        paddingHorizontal: 10
+    },
+    pdv5:{
+        paddingVertical: 5
     },
     w100p:{
         width: '100%'

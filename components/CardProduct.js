@@ -2,18 +2,50 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import { s } from "../styles/Global";
 import calcTime from "../methods/calcTime";
+import apiData from "../methods/getApi";
 
 const CardProduct = (props) => {
-  const {images, title, amount, city, created_at }= props
-  const [ctime, setCtime] = useState("");
-
+  const {id, images, title, amount, city, state, created_at, route, navigation }= props
+  const [prodData, setProdData] = useState({})
+  const [loading, setLoading] = useState()
   const time_diff = calcTime(created_at)
+
+  const getProductDetails = ()=>{
+    async function getData(){
+      setLoading(true)
+      const {data} = await apiData(`https://www.addressguru.in/api/marketplace/product?id=${id}`)
+      setLoading(false)
+      setProdData(data)
+    }
+    getData()
+  }
   useEffect(()=>{
-    setCtime(time_diff)
+    getProductDetails()
+    // console.log("prodData = ",prodData)
   },[])
+
+  const handlePress=()=>{
+    navigation.navigate('LandingPageMp',{
+      prodId: prodData.id,
+      title: prodData.title,
+      state: prodData.state,
+      city: prodData.city,
+      locality: prodData.locality,
+      img: images[0],
+      postedDate: prodData.date_posted,
+      amount: prodData.amount,
+      name: prodData.name,
+      email: prodData.email,
+      phone: prodData.phone,
+      cat: prodData.category_id,
+      subCat: prodData.subcategory_id,
+      about: prodData.description,
+      adId: prodData.user_id,
+    })
+  }
   return (
     <View style={styles.container}>
-      <TouchableOpacity >
+      <TouchableOpacity onPress={handlePress}>
         <View style={[styles.imgWrapper]}>
           <Image  style={styles.img} source={{uri:"https://www.addressguru.in/images/"+images[0]}}/>
         </View>

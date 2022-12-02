@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import { s } from "../styles/Global";
 import calcTime1 from "../methods/calcTime1";
 import calcTime from "../methods/calcTime";
+import apiData from "../methods/getApi";
 
 const CardJobsNew = (props) => {
-  const [ctime, setCtime] = useState("");
+  const [jobData, setJobData] = useState({})
+  const [loading, setLoading] = useState()
   const {
+    id,
     images,
     title,
     company_name,
@@ -16,29 +19,53 @@ const CardJobsNew = (props) => {
     salary_to,
     type,
     created_at,
+    route,
+    navigation
   } = props;
 
-  let time = Date.now()
-  // static time diff
-  // let time_diff = calcTime1(time)
   let time_diff = calcTime(created_at)
+
+  const getJobDetails = ()=>{
+    async function getData(){
+      setLoading(true)
+      const {data} = await apiData(`https://www.addressguru.in/api/job?id=${id}`)
+      setLoading(false)
+      setJobData(data)
+    }
+    getData()
+  }
   useEffect(()=>{
-    setCtime(time_diff)
+    getJobDetails()
+    // console.log("jobdata====>", jobData)
   },[])
 
-  //dynamic time diff
-  // useEffect(()=>{
-  //   const timeId = setInterval(() => {
-  //     // let time_diff = calcTime(created_at)
-  //     let time_diff = calcTime1(time)
-  //     setCtime(time_diff)
-  //   }, 1000);
-  //   return () => clearInterval(timeId)
-  // },[])
- 
+
+  const handlePress = ()=>{
+    navigation.navigate('LandingPageJob', {
+      jobId: jobData.id,
+      title: jobData.title,
+      state: jobData.state,
+      city: jobData.city,
+      locality: jobData.locality,
+      img: images[0],
+      postedDate: jobData.date_posted,
+      salaryPeriod: jobData.only_for,
+      positionType: jobData.type,
+      salary_from: jobData.salary_from,
+      salary_to: jobData.salary_to,
+      name: jobData.name,
+      email: jobData.email,
+      phone: jobData.phone,
+      cat: jobData.category_id,
+      subCat: jobData.subcategory_id,
+      about: jobData.description,
+      adId: jobData.user_id,
+    })
+  }
+
   return (
     <View style={[styles.container]}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handlePress}>
         <View style={[styles.r1, s.row]}>
           <View style={[styles.imgWrapper]}>
             <Image
@@ -46,7 +73,7 @@ const CardJobsNew = (props) => {
               source={{ uri: "https://www.addressguru.in/images/" + images[0] }}
             />
           </View>
-          <View style={[s.sb, { width: "76%", paddingBottom: 5 }]}>
+          <View style={[s.sb, { width: "77%", paddingBottom: 5,  }]}>
             <View style={[]}>
               <Text
                 style={[
@@ -93,7 +120,7 @@ const CardJobsNew = (props) => {
               <Text style={[s.fwb, s.cgray, s.tc]}>Posted</Text>
             </View>
             <View>
-              <Text style={[s.cgray]}>{ctime}</Text>
+              <Text style={[s.cgray]}>{time_diff}</Text>
             </View>
           </View>
         </View>
