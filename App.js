@@ -18,12 +18,19 @@ import { s } from './styles/Global';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import TabHome from './screens/drawerScreens/TabHome';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import apiData from './methods/getApi';
 
 const Drawer = createDrawerNavigator()
 export default function App() {
+  const [loading, setLoading] = useState(false)
+  const [citiesData, setCitiesData] = useState([])
   const getCities = ()=>{
     async function getData(){
-      
+      setLoading(true)
+      const {data}  = await apiData('https://www.addressguru.in/api/cities')
+      setLoading(false)
+      setCitiesData(data)
     }
     getData()
   }

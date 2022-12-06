@@ -24,6 +24,8 @@ import ListFacilities from "../../components/ListFacilities";
 import DummyAd from "../../components/DummyAd";
 import ListPayment from "../../components/ListPayment";
 import ShowMap from "../../components/ShowMap";
+import ShowReviews from "../../components/ShowReviews";
+import CarouselSlider from "../../components/CarouselSlider";
 
 const CommonLandingPage = ({ route }) => {
   const [loading, setLoading] = useState(false);
@@ -70,21 +72,13 @@ const CommonLandingPage = ({ route }) => {
               </Text>
             </View>
             <View style={[s.bgColWh, {marginTop: 10}]}>
-              <View style={[{ padding: 10 }]}>
-                <Image
-                  style={[styles.img]}
-                  source={{
-                    uri:
-                      "https://www.addressguru.in/images/" + listingData.photo,
-                  }}
-                />
-              </View>
+              <CarouselSlider entries={listingData?.media}/>
               <View style={[s.bgColWh, s.pd5, { borderRadius: 5 }]}>
                 <View style={[{ padding: 10 }]}>
                   <View style={[s.row, s.pdv5, s.alICenter]}>
                     <Icon
                       name={listingData?.category?.icon}
-                      size={16}
+                      size={13}
                       color={listingData?.category?.colors}
                       style={[s.pdh5, s.tc, { width: 27 }]}
                     />
@@ -176,7 +170,7 @@ const CommonLandingPage = ({ route }) => {
                     <View
                       style={[{ borderBottomWidth: 1, paddingVertical: 5 }]}
                     >
-                      <Text style={[s.f22, s.fwb, s.cgray]}>State</Text>
+                      <Text style={[s.f20, s.fwb, s.cgray]}>State</Text>
                     </View>
                     <View style={[{ paddingVertical: 5 }]}>
                       {listingData?.personals ? (
@@ -191,7 +185,7 @@ const CommonLandingPage = ({ route }) => {
                     <View
                       style={[{ borderBottomWidth: 1, paddingVertical: 5 }]}
                     >
-                      <Text style={[s.f22, s.fwb, s.cgray]}>District</Text>
+                      <Text style={[s.f20, s.fwb, s.cgray]}>District</Text>
                     </View>
                     <View style={[{ paddingVertical: 5 }]}>
                       {listingData?.personals ? (
@@ -215,7 +209,7 @@ const CommonLandingPage = ({ route }) => {
               </View>
               )}
               <View>
-
+                <ShowReviews data={listingData.ratings}/>
               </View>
               <View>
                 <EnquiryForm />

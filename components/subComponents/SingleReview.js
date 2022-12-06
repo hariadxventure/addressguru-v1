@@ -1,10 +1,15 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const SingleReview = () => {
+const SingleReview = ({data}) => {
   return (
     <View>
-      <Text>SingleReview</Text>
+      <Text>{data.name}</Text>
+      <View>
+        <Text>{data.rating}</Text>
+        <Text>{data.created_at}</Text>
+      </View>
+      <Text>{data.message}</Text>
     </View>
   )
 }

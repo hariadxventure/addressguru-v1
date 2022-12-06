@@ -24,10 +24,12 @@ const CardListing = (props) => {
   return (
     <View style={[styles.container, s.row]}>
       <View style={[styles.imgWrapper]}>
-        <Image
-          style={[styles.img]}
-          source={{ uri: "https://www.addressguru.in/images/" + photo }}
-        ></Image>
+        <TouchableOpacity onPress={handlePress}>
+          <Image
+            style={[styles.img]}
+            source={{ uri: "https://www.addressguru.in/images/" + photo }}
+            ></Image>
+          </TouchableOpacity>
       </View>
       <View style={[styles.right]}>
         <TouchableOpacity onPress={handlePress}>
@@ -65,7 +67,7 @@ const CardListing = (props) => {
               <Text style={[{ marginLeft: 3 }]}>Call Now</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handlePress}>
             <View style={[styles.viewDetailbtn]}>
               <Text style={[s.cWh]}>View Details</Text>
             </View>
