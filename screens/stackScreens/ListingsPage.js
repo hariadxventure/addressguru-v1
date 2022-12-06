@@ -1,9 +1,11 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import apiData from '../../methods/getApi'
 import CardListing from '../../components/CardListing'
+import { ScrollView } from 'react-native-gesture-handler'
+import CommonHeader from '../../components/CommonHeader'
 
-const ListingPage = (props) => {
+const ListingsPage = (props) => {
   const {route} = props
   const [refreshing, setRefreshing] = useState(false)
   const [listingData, setListingData] = useState([])
@@ -23,6 +25,13 @@ const ListingPage = (props) => {
 
   return (
     <View >
+      {/* <ScrollView>
+      <Image
+        style={{ width: "100%", resizeMode: "contain" }}
+        source={require("../../assets/others/AdMarketPlace.jpg")}
+       />
+      </ScrollView> */}
+      <CommonHeader isListing={true}/>
      <FlatList
       data={listingData}
       renderItem={({item})=><CardListing {...props} {...item}/>}
@@ -31,6 +40,7 @@ const ListingPage = (props) => {
       refreshing={refreshing}
       contentContainerStyle={{
         paddingVertical: 10,
+        paddingBottom: 70,
         alignItems: 'center'
       }}
      />
@@ -38,4 +48,4 @@ const ListingPage = (props) => {
   )
 }
 
-export default ListingPage
+export default ListingsPage

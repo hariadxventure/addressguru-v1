@@ -17,9 +17,22 @@ import LogoTitle from './components/LogoTitle';
 import { s } from './styles/Global';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import TabHome from './screens/drawerScreens/TabHome';
+import { useEffect } from 'react';
 
 const Drawer = createDrawerNavigator()
 export default function App() {
+  const getCities = ()=>{
+    async function getData(){
+      
+    }
+    getData()
+  }
+  useEffect(()=>{
+    getCities()
+  },[])
+  const handlePress = (props)=>{
+    console.log("city= ", props)
+  }
   return (
     <NavigationContainer >
       <Drawer.Navigator
@@ -35,7 +48,7 @@ export default function App() {
         },
         headerTitle:(props)=><LogoTitle {...props}/>,
         headerRight:(props)=>(
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>handlePress(props)}>
             <View style={{paddingRight: 20}}>
               <Text style={[s.f15,{color: '#2DCDFF'}]}>Select City</Text>
             </View>
@@ -80,3 +93,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+
+
+
+
+
+
+
+// ========================================================= //
+        // Designed and Developed by Hari Joshi, //
+                // contact- 7906519104, //
+        // email: mr.hariprasadjoshi@gmail.com //
+// ========================================================== //

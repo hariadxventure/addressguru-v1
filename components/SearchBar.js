@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     container:{
       flex: 4,
       paddingVertical: 5,
-      paddingLeft: 10
+      paddingHorizontal: 10
     },
     search: {
         padding: 7,

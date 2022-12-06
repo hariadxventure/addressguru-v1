@@ -9,18 +9,22 @@ import RBSheet from 'react-native-raw-bottom-sheet'
 import FilterScreen from '../screens/special/FilterScreen'
 const {width, height} = Dimensions.get('window')
 
-const CommonHeader = ({scrollY, menuUrl}) => {
+const CommonHeader = ({scrollY, menuUrl, isListing}) => {
   const refRBSheet = useRef()
   return (
     <View style={[styles.container]}>
       <View style={[s.row]}>
         <SearchBar/>
-        <TouchableOpacity style={[s.container, s.row, {flex: 1.3, paddingHorizontal: 5}]} onPress={()=>refRBSheet.current.open()}>
-          <View style={[s.container, s.row, s.pd10]} >
+        {!isListing?(
+        <TouchableOpacity style={[s.container, s.row, {flex: 1.3, paddingRight: 5}]} onPress={()=>refRBSheet.current.open()}>
+          <View style={[s.container, s.row, s.pd10,{paddingLeft: 0}]} >
             <Icon name='filter' size={17} color='black' style={[]}/>
             <Text style={[{fontSize: 18, marginLeft:3}]}>Filter</Text>
           </View>
         </TouchableOpacity>
+        ):(
+          null
+        )}
       </View >
       {/* <View style={[s.pd5,s.pdt5]}>
         <ScrollMenu url={menuUrl}/>

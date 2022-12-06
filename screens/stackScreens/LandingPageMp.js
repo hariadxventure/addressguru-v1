@@ -14,12 +14,13 @@ import Icon5 from "react-native-vector-icons/FontAwesome5";
 import { s } from "../../styles/Global";
 import EnquiryForm from "../../components/EnquiryForm";
 import apiData from "../../methods/getApi";
+import UseFullInfo from "../../components/UseFullInfo";
 
 const LandingPageMp = ({ route }) => {
   const [loading, setLoading] = useState(false)
   const [cats, setCats] = useState([])
   const [subCats, setSubCats] = useState([])
-  const fetchData = ()=>{
+  const getProductDetails = ()=>{
     async function getData(){
       setLoading(true)
       const {data} = await apiData(`https://www.addressguru.in/api/marketplace/categories`)
@@ -29,7 +30,7 @@ const LandingPageMp = ({ route }) => {
     getData()
   }
   useEffect(()=>{
-    fetchData()
+    getProductDetails()
   },[])
   // const catName = 
   return (
@@ -172,21 +173,7 @@ const LandingPageMp = ({ route }) => {
           <View>
             <EnquiryForm />
           </View>
-          <View style={[s.bgColWh, s.pd5, {borderRadius: 5, paddingTop: 10}]}>
-            <Text style={[s.f22]}>useFull Information</Text>
-            <View style={[s.pd5]}>
-              <Text style={[s.pd5, s.f18, s.cgray]}>1. Avoid any scams while paying directly in advance</Text>
-              <Text style={[s.pd5, s.f18, s.cgray]}>2. Make payment via Western Union etc at your own risk.</Text>
-              <Text style={[s.pd5, s.f18, s.cgray]}>
-                3. You can accept and make payments from outside the country at
-                your own risk.
-              </Text>
-              <Text style={[s.pd5, s.f18, s.cgray]}>
-                4. Address Guru is not responsible for any transation or payments,
-                shipping guarantee, seller or buyer protections.
-              </Text>
-            </View>
-          </View>
+          <UseFullInfo/>
         </View>
       </View>
     </ScrollView>

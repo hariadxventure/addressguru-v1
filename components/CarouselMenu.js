@@ -24,7 +24,7 @@ const CarouselMenu = (props) => {
   },[])
 
   const handlePress = (data)=>{
-    navigation.navigate('ListingPage',{
+    navigation.navigate('ListingsPage',{
       catName: data.name,
       city: "dehradun"
     })

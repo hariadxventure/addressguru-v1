@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 
 const PrintStars = ({fdigit, ldigit}) => {
   useEffect(()=>{
-    console.log("fd= ", fdigit,", ld= ", ldigit)
+    // console.log("fd= ", fdigit,", ld= ", ldigit)
   },[])
   return (
     <>

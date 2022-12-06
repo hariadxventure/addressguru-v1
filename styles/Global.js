@@ -16,8 +16,14 @@ export const s = StyleSheet.create({
     f28:{
         fontSize:28
     },
+    f25:{
+        fontSize:25
+    },
     f22:{
         fontSize: 22
+    },
+    f21:{
+        fontSize: 21
     },
     f20:{
         fontSize: 20
@@ -43,6 +49,9 @@ export const s = StyleSheet.create({
     cWh:{
         color: 'white'
     },
+    cLightBlue: {
+        color: '#2D6A9D'
+    },
     bgColWh:{
         backgroundColor: "white"
     },
@@ -57,6 +66,9 @@ export const s = StyleSheet.create({
     },
     bgColYel:{
         backgroundColor: "yellow"
+    },
+    bgColLightRed:{
+        backgroundColor: 'rgba(255, 0, 0, 0.1)'
     },
     fwb:{
         fontWeight: 'bold'
@@ -82,8 +94,8 @@ export const s = StyleSheet.create({
     pdl10:{
         paddingLeft: 10
     },
-    pdl10:{
-        paddingLeft: 10
+    pdl5:{
+        paddingLeft: 5
     },
     pdb10:{
         paddingBottom: 10
@@ -109,14 +121,26 @@ export const s = StyleSheet.create({
     pdh10:{
         paddingHorizontal: 10
     },
+    pdh20:{
+        paddingHorizontal: 20
+    },
     pdv5:{
         paddingVertical: 5
+    },
+    pdv10:{
+        paddingVertical: 10
     },
     w100p:{
         width: '100%'
     },
     m10:{
         margin: 10
+    },
+    mh3: {
+        marginHorizontal: 3
+    },
+    ml10:{
+        marginLeft: 10
     },
     mla:{
         marginLeft: 'auto'
@@ -170,6 +194,9 @@ export const s = StyleSheet.create({
     },
     sa: {
         justifyContent: 'space-around'
+    },
+    alICenter: {
+        alignItems: 'center'
     },
     wrp:{
         flexWrap: 'wrap'
