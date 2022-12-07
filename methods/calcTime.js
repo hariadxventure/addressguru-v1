@@ -11,12 +11,6 @@ const calcTime = (created_at)=>{
   let mins_pos = time_pos.split(":")[1];
   let secs_pos = time_pos.split(":")[2];
 
-  // console.log(postedDateArr)
-  // console.log("date = ",date_pos)
-  // console.log("time= ",time_pos)
-  // console.log("yrp= ",year_pos, " monp= ",month_pos, " dayp= ",day_pos)
-  // console.log("hr= ",hrs_pos, " min= ",mins_pos, " sec= ",secs_pos)
-
   let date_posted = new Date(year_pos, month_pos, day_pos, hrs_pos, mins_pos, secs_pos)
   let cTime = Date.now()
   
@@ -28,15 +22,6 @@ const calcTime = (created_at)=>{
   let fweeks = parseInt(fdays/7)
   let fmonths = parseInt(fdays/30.5)
   let fyears = parseInt(fdays/365)
-
-
-  // console.log("fsecs= ", fsecs)
-  // console.log("fmins= ", fmins)
-  // console.log("fhrs= ", fhrs)
-  // console.log("fdays= ", fdays)
-  // console.log("fweeks= ", fweeks)
-  // console.log("fmonths= ", fmonths)
-  // console.log("fyears= ", fyears)
 
 
   if(fyears>0){

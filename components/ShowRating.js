@@ -29,12 +29,12 @@ const ShowRating = ({ratings, style}) => {
   }, [fdigit, ldigit, avgRating]);
   return (
     <View style={[s.row,{ ...style}]}>
-    <View>
+    <View style={[]}>
       <Text style={[s.cgray, { fontSize: 12 }]}>
         {avgRating.toFixed(1)}
       </Text>
     </View>
-    <View style={[s.row]}>
+    <View style={[s.row, s.pdl5]}>
       <PrintStars fdigit={fdigit} ldigit={ldigit} />
     </View>
     <View

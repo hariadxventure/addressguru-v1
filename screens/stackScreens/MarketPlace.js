@@ -41,17 +41,6 @@ const MarketPlace = (props) => {
         columnWrapperStyle={[s.se]}
         numColumns={2}
       />
-      {/* <ScrollView onScroll={e=>{
-        // setScrollY(e.nativeEvent.contentOffset.y)
-        setScrollY(0)
-        if (e.nativeEvent.contentOffset.y>10) {
-          setScrollY(55)
-        }
-      }}>
-        <View style={[s.row, s.wrp, s.se, s.pd5, {paddingBottom: 80, backgroundColor: '#EBF5FF'}]}>
-          {prodData.map(item=><CardProduct key={item.id} {...item}/>)}
-        </View>
-      </ScrollView> */}
     </View>
   );
 };

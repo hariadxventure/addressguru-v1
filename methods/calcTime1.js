@@ -2,7 +2,11 @@ const calcTime1 = (created_at)=>{
  
   let cTime = Date.now()
   
-  let time_diff = cTime - created_at
+  let date_posted = new Date(created_at)
+
+  // console.log("date_posted=", date_posted)
+  
+  let time_diff = cTime - date_posted
   let fsecs = parseInt(time_diff/(1000))
   let fmins = parseInt(fsecs/60)
   let fhrs = parseInt(fmins/60)
@@ -10,15 +14,6 @@ const calcTime1 = (created_at)=>{
   let fweeks = parseInt(fdays/7)
   let fmonths = parseInt(fdays/30.5)
   let fyears = parseInt(fdays/365)
-
-
-  // console.log("fsecs= ", fsecs)
-  // console.log("fmins= ", fmins)
-  // console.log("fhrs= ", fhrs)
-  // console.log("fdays= ", fdays)
-  // console.log("fweeks= ", fweeks)
-  // console.log("fmonths= ", fmonths)
-  // console.log("fyears= ", fyears)
 
 
   if(fyears>0){

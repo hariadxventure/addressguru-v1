@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Ad2 from "../../components/Ad2";
@@ -15,76 +16,63 @@ import { s } from "../../styles/Global";
 import EnquiryForm from "../../components/EnquiryForm";
 import apiData from "../../methods/getApi";
 import UseFullInfo from "../../components/UseFullInfo";
+import CarouselSlider from "../../components/CarouselSlider";
+import ShowMap from "../../components/ShowMap";
+import LoadingLarge from "../../components/LoadingLarge";
+import DummyAd from "../../components/DummyAd";
 
 const LandingPageMp = ({ route }) => {
   const [loading, setLoading] = useState(false)
-  const [cats, setCats] = useState([])
-  const [subCats, setSubCats] = useState([])
+  const [prodData, setProdData] = useState({})
+
   const getProductDetails = ()=>{
     async function getData(){
       setLoading(true)
-      const {data} = await apiData(`https://www.addressguru.in/api/marketplace/categories`)
+      const {data} = await apiData(`https://www.addressguru.in/api/marketplace/product?id=${route?.params?.id}`)
       setLoading(false)
-      setCats(data)
+      setProdData(data)
     }
     getData()
   }
   useEffect(()=>{
     getProductDetails()
   },[])
-  // const catName = 
+ 
   return (
-    <ScrollView>
+    <>
+    {loading?(
+      <LoadingLarge />
+    ):(
+      <ScrollView>
       <View style={[styles.container]}>
-        <View style={[s.container, s.pd10, {}]}>
-          <Image
-            style={{ width: "100%", resizeMode: "contain" }}
-            source={require("../../assets/others/AdMarketPlace.jpg")}
-          />
-        </View>
-        <View
-          style={[
-            s.pdh5,
-            {
-              backgroundColor: "white",
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-            },
-          ]}
-        >
-          <Text style={[s.f28, s.fwb, s.cgray]}>{route.params.title}</Text>
+        <DummyAd />
+        <View style={[s.pdh10, s.pdv10, s.bgColWh]}>
+          <Text style={[s.f28, s.fwb, s.cgray]}>{prodData?.title}</Text>
           <Text style={[{ paddingTop: 10 }]}>
-            {route.params.locality} / {route.params.city} / {route.params.state}
+            {prodData?.locality} / {prodData?.city} / {prodData?.state}
           </Text>
         </View>
-        <View style={[{ padding: 10 }]}>
-          <Image
-            style={[styles.img]}
-            source={{
-              uri: "https://www.addressguru.in/images/" + route.params.img,
-            }}
-          />
-        </View>
+        <CarouselSlider entries={prodData?.medias}/>
         <View
           style={[s.pd5, { alignItems: "flex-end", paddingHorizontal: 10 }]}
         >
-          <Text>Posted Date: 17 oct, 2020</Text>
+          <Text>Posted Date: {prodData?.date_posted}</Text>
         </View>
         <View style={[s.pd10]}>
          <View style={[s.bgColWh, s.pd5,{borderRadius: 5}]}>
          <View style={[{ padding: 10}]}>
             <View style={[s.row, s.pdv5, {alignItems: 'center'}]}>
               <Icon name="tag" size={20} style={[s.pdh5]} />
-              <Text style={[s.f18, s.cgray]}>{route.params.cat}</Text>
+              <Text style={[s.f18, s.cgray]}>{prodData?.cat}</Text>
             </View>
             <View style={[s.row, s.pdv5, {alignItems: 'center'}]}>
               <Icon name="tag" size={20} style={[s.pdh5]} />
-              <Text style={[s.f18, s.cgray]}>{route.params.subCat}</Text>
+              <Text style={[s.f18, s.cgray]}>{prodData?.subCat}</Text>
             </View>
             <View style={[s.row, s.pdv5, {alignItems: 'center'}]}>
               <Icon name="map-marker" size={20} style={[s.pdh5]} />
               <Text style={[s.f18, s.cgray]}>
-                {route.params.city} / {route.params.state}
+                {prodData?.city} / {prodData?.state}
               </Text>
             </View>
           </View>
@@ -135,7 +123,7 @@ const LandingPageMp = ({ route }) => {
             </View>
             <View  style={[s.pdv5]}>
               <Text style={[s.f17,{lineHeight: 25}]}>
-                {route.params.about}
+                {prodData?.description}
               </Text>
             </View>
             <View style={[s.row, s.sb]}>
@@ -144,7 +132,7 @@ const LandingPageMp = ({ route }) => {
                   <Text style={[s.f22, s.fwb, s.cgray]}>State</Text>
                 </View>
                 <View style={[{paddingVertical: 5}]}>
-                  <Text style={[s.f15]}>{route.params.state}</Text>
+                  <Text style={[s.f15]}>{prodData?.state}</Text>
                 </View>
               </View>
               <View>
@@ -152,24 +140,21 @@ const LandingPageMp = ({ route }) => {
                   <Text style={[s.f22, s.fwb, s.cgray]}>District</Text>
                 </View>
                 <View style={[{paddingVertical: 5}]}>
-                  <Text style={[s.f15]}>{route.params.city}</Text>
+                  <Text style={[s.f15]}>{prodData?.city}</Text>
                 </View>
               </View>
             </View>
           </View>
-          <View style={[s.bgColWh, {padding: 10, marginVertical: 5, height: 200}]}>
-            <Text>Map</Text>
-          </View>
-          <View style={[s.bgColWh, s.pd10, {marginVertical: 5, borderRadius: 5, paddingVertical: 20}]}>
-            <View style={[{borderBottomWidth: 1, paddingVertical: 10}]}>
-              <Text  style={[s.f20, s.cgray]}>OverView - {route.params.title}</Text>
-            </View>
-            <View style={[{paddingTop: 5}]}>
-              <Text  style={[s.f16, s.cgray, {lineHeight:23}]}>
-                {route.params.about}
-              </Text>
-            </View>
-          </View>
+          {prodData?.map != null && (
+                <View
+                style={[
+                  s.bgColWh,
+                  { marginVertical: 5, height: 257 },
+                ]}
+              >
+                <ShowMap data={prodData?.map}/>
+              </View>
+              )}
           <View>
             <EnquiryForm />
           </View>
@@ -177,6 +162,8 @@ const LandingPageMp = ({ route }) => {
         </View>
       </View>
     </ScrollView>
+    )}
+    </>
   );
 };
 
@@ -196,3 +183,10 @@ const styles = StyleSheet.create({
 });
 
 export default LandingPageMp;
+
+
+// ========================================================= //
+        // Designed and Developed by Hari Joshi, //
+                // contact- 7906519104, //
+        // email: mr.hariprasadjoshi@gmail.com //
+// ========================================================== //

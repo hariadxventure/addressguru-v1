@@ -16,7 +16,6 @@ const FilterScren = ({closeSheet, menuUrl}) => {
       const {data} = await apiData(menuUrl) 
       setLoading(false)
       setCat(data)
-      // console.log("dataApi= ",data)
     }
     getData()
   },[])

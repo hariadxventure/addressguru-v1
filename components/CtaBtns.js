@@ -1,12 +1,12 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Linking } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon5 from "react-native-vector-icons/FontAwesome5";
 import { s } from "../styles/Global";
 
-const Single = ({ text, icon }) => {
+const Single = ({ text, icon, data }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={icon=='phone'?(()=>Linking.openURL(`tel: ${data}`)):icon=='chat'?(()=>Linking.openURL(`sms:${data}`)):(()=>Linking.openURL(data)) }>
       <View
         style={[
           s.row,
@@ -24,12 +24,12 @@ const Single = ({ text, icon }) => {
   );
 };
 
-const CtaBtns = () => {
+const CtaBtns = ({data, webLink}) => {
   return (
     <View style={[s.row, s.pdh10]}>
-      <Single text="call" icon="phone" />
-      <Single text="chat" icon="whatsapp" />
-      <Single text="Visit Website" icon="internet-explorer" />
+      <Single text="call" icon="phone" data={data?.ph_number}/>
+      <Single text="chat" icon="whatsapp" data={data?.ph_number}/>
+      <Single text="Visit Website" icon="internet-explorer" data={webLink}/>
     </View>
   );
 };

@@ -3,6 +3,9 @@ import { StyleSheet, Dimensions } from "react-native";
 const {width, height} = Dimensions.get('window')
 
 export const s = StyleSheet.create({
+    br5:{
+        borderRadius: 5
+    },
     br10:{
         borderRadius: 10
     },
@@ -63,6 +66,9 @@ export const s = StyleSheet.create({
     },
     bgColgry:{
         backgroundColor: "gray"
+    },
+    bgColLightgry:{
+        backgroundColor: "#E1E1E1"
     },
     bgColYel:{
         backgroundColor: "yellow"
@@ -138,6 +144,9 @@ export const s = StyleSheet.create({
     },
     mh3: {
         marginHorizontal: 3
+    },
+    mv5: {
+        marginVertical: 5
     },
     ml10:{
         marginLeft: 10

@@ -25,41 +25,9 @@ const CardJobsNew = (props) => {
 
   let time_diff = calcTime(created_at)
 
-  const getJobDetails = ()=>{
-    async function getData(){
-      setLoading(true)
-      const {data} = await apiData(`https://www.addressguru.in/api/job?id=${id}`)
-      setLoading(false)
-      setJobData(data)
-    }
-    getData()
-  }
-  useEffect(()=>{
-    getJobDetails()
-    // console.log("jobdata====>", jobData)
-  },[])
-
-
   const handlePress = ()=>{
     navigation.navigate('LandingPageJob', {
-      jobId: jobData.id,
-      title: jobData.title,
-      state: jobData.state,
-      city: jobData.city,
-      locality: jobData.locality,
-      img: images[0],
-      postedDate: jobData.date_posted,
-      salaryPeriod: jobData.only_for,
-      positionType: jobData.type,
-      salary_from: jobData.salary_from,
-      salary_to: jobData.salary_to,
-      name: jobData.name,
-      email: jobData.email,
-      phone: jobData.phone,
-      cat: jobData.category_id,
-      subCat: jobData.subcategory_id,
-      about: jobData.description,
-      adId: jobData.user_id,
+      id: id,
     })
   }
 

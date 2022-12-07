@@ -6,41 +6,11 @@ import apiData from "../methods/getApi";
 
 const CardProduct = (props) => {
   const {id, images, title, amount, city, state, created_at, route, navigation }= props
-  const [prodData, setProdData] = useState({})
-  const [loading, setLoading] = useState()
   const time_diff = calcTime(created_at)
-
-  const getProductDetails = ()=>{
-    async function getData(){
-      setLoading(true)
-      const {data} = await apiData(`https://www.addressguru.in/api/marketplace/product?id=${id}`)
-      setLoading(false)
-      setProdData(data)
-    }
-    getData()
-  }
-  useEffect(()=>{
-    getProductDetails()
-    // console.log("prodData = ",prodData)
-  },[])
 
   const handlePress=()=>{
     navigation.navigate('LandingPageMp',{
-      prodId: prodData.id,
-      title: prodData.title,
-      state: prodData.state,
-      city: prodData.city,
-      locality: prodData.locality,
-      img: images[0],
-      postedDate: prodData.date_posted,
-      amount: prodData.amount,
-      name: prodData.name,
-      email: prodData.email,
-      phone: prodData.phone,
-      cat: prodData.category_id,
-      subCat: prodData.subcategory_id,
-      about: prodData.description,
-      adId: prodData.user_id,
+      id: id,
     })
   }
   return (
@@ -64,11 +34,8 @@ const CardProduct = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    // borderColor: "#C1E0FF",
     elevation: 0,
-    // paddingHorizontal: 1,
     borderRadius: 5,
-    // borderWidth: 1,
     backgroundColor: 'white',
     width: '48%',
     marginVertical: 6
@@ -76,7 +43,6 @@ const styles = StyleSheet.create({
   imgWrapper:{
     height: 140,
     width: "100%",
-    // backgroundColor: "blue"
   },
   img:{
     height: 140,

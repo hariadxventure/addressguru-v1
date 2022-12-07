@@ -3,9 +3,7 @@ import  Icon from "react-native-vector-icons/FontAwesome";
 import React, { useEffect } from 'react'
 
 const PrintStars = ({fdigit, ldigit}) => {
-  useEffect(()=>{
-    // console.log("fd= ", fdigit,", ld= ", ldigit)
-  },[])
+  
   return (
     <>
     {

@@ -5,6 +5,7 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
+  Linking
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { s } from "../styles/Global";
@@ -13,7 +14,7 @@ import PrintStars from "./PrintStars";
 import ShowRating from "./ShowRating";
 
 const CardListing = (props) => {
-  const { navigation, ratings, name, business_address, photo, slug } = props;
+  const { navigation, ratings, name, business_address, photo, slug, ph_number } = props;
 
   const handlePress = () => {
     navigation.navigate("CommonLandingPage", {
@@ -61,7 +62,7 @@ const CardListing = (props) => {
           </View>
         </View>
         <View style={[styles.r4, s.pdv5, s.row, s.sb, { paddingTop: 10 }]}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>Linking.openURL(`tel: ${ph_number}`)}>
             <View style={[styles.callbtn, s.row, { alignItems: "center" }]}>
               <Icon name="phone" size={18} />
               <Text style={[{ marginLeft: 3 }]}>Call Now</Text>

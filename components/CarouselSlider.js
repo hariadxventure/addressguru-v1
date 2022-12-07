@@ -38,18 +38,27 @@ const CarouselSlider = ({entries, type}) => {
       }}
       sliderWidth= {width}
       pagingEnabled={true}
-      itemHeight= {width}
-      itemWidth= {320}
+      itemWidth= {width}
+      itemHeight= {400}
     />
     <Pagination
        dotsLength={entries?.length}
-       containerStyle={{backgroundColor: 'white', marginTop: -10}}
+       containerStyle={{backgroundColor: 'transparent', marginTop: -65}}
+       dotContainerStyle={{
+        // backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        // padding: 1,
+        // paddingHorizontal: 4,
+        // borderRadius: 5
+       }}
        dotStyle={{
          width: 13,
          height: 4,
          // borderRadius: 5,
          marginHorizontal: -3,
-         backgroundColor: 'rgba(0, 0, 0, 0.75)',
+         borderWidth: 1,
+         borderColor: 'black',
+        //  backgroundColor: 'rgba(0, 0, 0, 0.75)',
+         backgroundColor: 'white',
        }}
        activeDotIndex={activeSlide}
        inactiveDotScale={0.7}
@@ -67,7 +76,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'green'
   },
   img: {
-    height: 180,
+    height: 250,
     width: "100%",
     resizeMode: "contain",
     backgroundColor: "white",

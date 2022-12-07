@@ -38,7 +38,7 @@ export default function App() {
     getCities()
   },[])
   const handlePress = (props)=>{
-    console.log("city= ", props)
+    // console.log("city= ", props)
   }
   return (
     <NavigationContainer >

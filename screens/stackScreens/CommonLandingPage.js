@@ -26,6 +26,8 @@ import ListPayment from "../../components/ListPayment";
 import ShowMap from "../../components/ShowMap";
 import ShowReviews from "../../components/ShowReviews";
 import CarouselSlider from "../../components/CarouselSlider";
+import LoadingLarge from "../../components/LoadingLarge";
+import AboutUs from "../../components/AboutUs";
 
 const CommonLandingPage = ({ route }) => {
   const [loading, setLoading] = useState(false);
@@ -46,19 +48,10 @@ const CommonLandingPage = ({ route }) => {
     getListingDetails();
   }, []);
 
-  console.log("listing data= ", listingData.slug);
-
   return (
     <>
       {loading ? (
-        <View
-          style={[
-            s.container,
-            { flex: 1, height: "100%", alignItems: "center" },
-          ]}
-        >
-          <ActivityIndicator size={"large"} />
-        </View>
+        <LoadingLarge />
       ) : (
         <ScrollView>
           <View style={[styles.container]}>
@@ -112,14 +105,16 @@ const CommonLandingPage = ({ route }) => {
                     style={{ paddingVertical: 10, paddingLeft: 5 }}
                   />
                 </View>
-                <CtaBtns />
+                <CtaBtns data={listingData?.personals?.[0]} webLink={listingData?.web_link}/>
                 <ShareSec />
-                <View style={[s.row, s.alICenter, s.pd10,{justifyContent: 'flex-end'}]}>
-                    <Icon name="hand-o-right" color={'blue'} size={25}/>
-                  <Text style={[{paddingLeft: 5}]}>
-                      Claim This Business
-                  </Text>
-                </View>
+                <TouchableOpacity>
+                  <View style={[s.row, s.alICenter, s.pd10,{justifyContent: 'flex-end'}]}>
+                      <Icon name="hand-o-right" color={'blue'} size={15}/>
+                    <Text style={[{paddingLeft: 5}]}>
+                        Claim This Business
+                    </Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
             <View style={[s.pd10]}>
@@ -131,7 +126,7 @@ const CommonLandingPage = ({ route }) => {
                   </View>
                 </TouchableOpacity>
                 <View>
-                  <Text style={[s.fwb, s.cgray]}>Ad Id: 34234234</Text>
+                  <Text style={[s.fwb, s.cgray]}>Ad Id: {listingData.user_id}</Text>
                 </View>
               </View>
               <View
@@ -143,23 +138,8 @@ const CommonLandingPage = ({ route }) => {
                   { marginVertical: 5, paddingHorizontal: 10 },
                 ]}
               >
-                <View
-                  style={[
-                    {
-                      borderBottomWidth: 1,
-                      borderBottomColor: "gray",
-                      paddingVertical: 10,
-                    },
-                  ]}
-                >
-                  <Text style={[s.f18]}>About us</Text>
-                </View>
-                <View style={[s.pdv5]}>
-                  <Text style={[s.f17, { lineHeight: 25 }]}>
-                    {listingData.ad_description}
-                  </Text>
-                </View>
                 <View>
+                  <AboutUs data={listingData.ad_description}/>
                   <ListFacilities data={listingData} subData ="facility" name="Facilities"/>
                   <ListFacilities data={listingData} subData="course" name="Course"/>
                   <ListFacilities data={listingData} subData="service" name="Services"/>
@@ -239,3 +219,10 @@ const styles = StyleSheet.create({
 });
 
 export default CommonLandingPage;
+
+
+// ========================================================= //
+        // Designed and Developed by Hari Joshi, //
+                // contact- 7906519104, //
+        // email: mr.hariprasadjoshi@gmail.com //
+// ========================================================== //
