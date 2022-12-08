@@ -20,6 +20,8 @@ import CarouselSlider from "../../components/CarouselSlider";
 import ShowMap from "../../components/ShowMap";
 import LoadingLarge from "../../components/LoadingLarge";
 import DummyAd from "../../components/DummyAd";
+import CtaBtns from "../../components/CtaBtns";
+import ShareSec from "../../components/ShareSec";
 
 const LandingPageMp = ({ route }) => {
   const [loading, setLoading] = useState(false)
@@ -63,11 +65,11 @@ const LandingPageMp = ({ route }) => {
          <View style={[{ padding: 10}]}>
             <View style={[s.row, s.pdv5, {alignItems: 'center'}]}>
               <Icon name="tag" size={20} style={[s.pdh5]} />
-              <Text style={[s.f18, s.cgray]}>{prodData?.cat}</Text>
+              <Text style={[s.f18, s.cgray]}>{prodData?.category_id}</Text>
             </View>
             <View style={[s.row, s.pdv5, {alignItems: 'center'}]}>
               <Icon name="tag" size={20} style={[s.pdh5]} />
-              <Text style={[s.f18, s.cgray]}>{prodData?.subCat}</Text>
+              <Text style={[s.f18, s.cgray]}>{prodData?.subcategory_id}</Text>
             </View>
             <View style={[s.row, s.pdv5, {alignItems: 'center'}]}>
               <Icon name="map-marker" size={20} style={[s.pdh5]} />
@@ -76,35 +78,8 @@ const LandingPageMp = ({ route }) => {
               </Text>
             </View>
           </View>
-          <View style={[s.row, s.pdh10]}>
-            <View style={[s.row, s.pd10,s.br10,{backgroundColor: 'rgba(255, 0, 0, 0.1)', alignItems: 'center'}]}>
-              <Icon name="phone" size={20} color='red'/>
-              <Text style={[s.cgray, s.f18,{paddingLeft:5,}]}>Call</Text>
-            </View>
-            <View style={[s.row, s.pd10,s.br10,{backgroundColor: 'rgba(255, 0, 0, 0.1)', alignItems: 'center',marginLeft: 10}]}>
-              <Icon name="whatsapp" size={20} color='red'/>
-              <Text style={[s.cgray, s.f18,{paddingLeft:5}]}>Chat</Text>
-            </View>
-          </View>
-          <View style={[s.container,{marginTop: 15}]}>
-            <View style={[{width: "98%", elevation: 1, margin: 5,backgroundColor: '#FDFDFD'}]}>
-              <Text style={[s.f18, s.cgray, {position: 'absolute', backgroundColor: 'white', padding: 3, top: -17, left: 10}]}>share on</Text>
-              <View style={[s.row]}>
-                <TouchableOpacity>
-                  <Icon5 name="whatsapp-square" size={30} color="#25d366" style={{ margin: 10 }} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon5 name="facebook-square" size={30} color="#3b5998" style={{ margin: 10 }} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon5 name="linkedin" size={30} color="#0a66c2" style={{ margin: 10 }} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon5 name="twitter-square" size={30} color="#55acee" style={{ margin: 10 }} />
-                </TouchableOpacity>
-                </View>
-            </View>
-          </View>
+          <CtaBtns data={prodData?.phone} webLink={"https://"}/>
+          <ShareSec />
          </View>
           <View style={[s.row, s.sb, s.pdh5, {paddingVertical: 10}]}>
               <TouchableOpacity>
@@ -114,7 +89,7 @@ const LandingPageMp = ({ route }) => {
                 </View>
               </TouchableOpacity>
             <View>
-              <Text style={[s.fwb, s.cgray]}>Ad Id: 34234234</Text>
+              <Text style={[s.fwb, s.cgray]}>Ad Id: {prodData?.user_id}</Text>
             </View>
           </View>
           <View style={[s.bgColWh, s.pdh5 ,s.pd10, s.sb,{marginVertical: 5, paddingHorizontal: 10 }]}>

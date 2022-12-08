@@ -28,6 +28,7 @@ import ShowReviews from "../../components/ShowReviews";
 import CarouselSlider from "../../components/CarouselSlider";
 import LoadingLarge from "../../components/LoadingLarge";
 import AboutUs from "../../components/AboutUs";
+import ReportBtn from "../../components/ReportBtn";
 
 const CommonLandingPage = ({ route }) => {
   const [loading, setLoading] = useState(false);
@@ -47,6 +48,7 @@ const CommonLandingPage = ({ route }) => {
   useEffect(() => {
     getListingDetails();
   }, []);
+  console.log("slug= ", route.params.slug)
 
   return (
     <>
@@ -119,12 +121,7 @@ const CommonLandingPage = ({ route }) => {
             </View>
             <View style={[s.pd10]}>
               <View style={[s.row, s.sb, s.pdh5, { paddingVertical: 10 }]}>
-                <TouchableOpacity>
-                  <View style={[s.row]}>
-                    <Icon name="times-rectangle" size={20} color="red" />
-                    <Text style={[s.pdh5, { color: "red" }]}>Report</Text>
-                  </View>
-                </TouchableOpacity>
+                <ReportBtn  title={listingData?.business_name} listingId={listingData?.id} userId={listingData?.user_id}/>
                 <View>
                   <Text style={[s.fwb, s.cgray]}>Ad Id: {listingData.user_id}</Text>
                 </View>

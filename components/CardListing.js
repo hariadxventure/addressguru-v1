@@ -34,22 +34,22 @@ const CardListing = (props) => {
       </View>
       <View style={[styles.right]}>
         <TouchableOpacity onPress={handlePress}>
-          <View style={[{ height: 43 }]}>
+          <View style={[{}]}>
             <Text
               style={[
                 s.f17,
-                { color: "#2D6A9D", fontWeight: "500", paddingBottom: 5 },
+                { color: "#2D6A9D", fontWeight: "500" },
               ]}
             >
-              {name.length > 54 ? name.substring(0, 54) + "..." : name}
+              {name.length > 45 ? name.substring(0, 45) + "..." : name}
             </Text>
           </View>
         </TouchableOpacity>
         <View style={[]}>
           <Text style={[s.fw400, s.cgray, s.f12]}>
-            {business_address.length > 35
-              ? business_address.substring(0, 35).split("\n") + "..."
-              : business_address.split("\n")}
+            {business_address.length > 30
+              ? business_address.substring(0, 30).replace(/,/g,", ").split("\n") + "..."
+              : business_address.replace(/,/g,", ").split("\n")}
           </Text>
         </View>
         <View style={[styles.r3, s.pdv5, s.row, s.sb, { paddingTop: 10 }]}>
