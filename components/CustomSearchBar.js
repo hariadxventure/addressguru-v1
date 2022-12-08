@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-const SearchBar = () => {
+const CustomSearchBar = () => {
   const [searchVal, setSearchVal] = useState("")
   return (
     <View style={[styles.container]}>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SearchBar
+export default CustomSearchBar

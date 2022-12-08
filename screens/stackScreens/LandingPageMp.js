@@ -22,6 +22,7 @@ import LoadingLarge from "../../components/LoadingLarge";
 import DummyAd from "../../components/DummyAd";
 import CtaBtns from "../../components/CtaBtns";
 import ShareSec from "../../components/ShareSec";
+import ReportBtn from "../../components/ReportBtn";
 
 const LandingPageMp = ({ route }) => {
   const [loading, setLoading] = useState(false)
@@ -82,12 +83,7 @@ const LandingPageMp = ({ route }) => {
           <ShareSec />
          </View>
           <View style={[s.row, s.sb, s.pdh5, {paddingVertical: 10}]}>
-              <TouchableOpacity>
-                <View style={[s.row]}>
-                  <Icon name="times-rectangle" size={20} color="red" />
-                  <Text style={[s.pdh5, {color: 'red'}]}>Report</Text>
-                </View>
-              </TouchableOpacity>
+          <ReportBtn  title={prodData?.business_name} listingId={prodData?.id} userId={prodData?.user_id}/>
             <View>
               <Text style={[s.fwb, s.cgray]}>Ad Id: {prodData?.user_id}</Text>
             </View>

@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet, Animated, Button, Dimensions } from 'react-native'
 import React, { useRef } from 'react'
-import SearchBar from './SearchBar'
 import Icon  from 'react-native-vector-icons/FontAwesome'
 import { s } from '../styles/Global'
 import ScrollMenu from './ScrollMenu'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import RBSheet from 'react-native-raw-bottom-sheet'
 import FilterScreen from '../screens/special/FilterScreen'
+import CustomSearchBar from './CustomSearchBar'
 const {width, height} = Dimensions.get('window')
 
 const CommonHeader = ({scrollY, menuUrl, isListing}) => {
@@ -14,7 +14,7 @@ const CommonHeader = ({scrollY, menuUrl, isListing}) => {
   return (
     <View style={[styles.container]}>
       <View style={[s.row]}>
-        <SearchBar/>
+        <CustomSearchBar/>
         {!isListing?(
         <TouchableOpacity style={[s.container, s.row, {flex: 1.3, paddingRight: 5}]} onPress={()=>refRBSheet.current.open()}>
           <View style={[s.container, s.row, s.pd10,{paddingLeft: 0}]} >

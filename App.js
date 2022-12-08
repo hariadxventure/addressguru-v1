@@ -20,26 +20,15 @@ import TabHome from './screens/drawerScreens/TabHome';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import apiData from './methods/getApi';
+import SelectCities from './components/SelectCities';
 
 const Drawer = createDrawerNavigator()
 export default function App() {
-  const [loading, setLoading] = useState(false)
-  const [citiesData, setCitiesData] = useState([])
-  const getCities = ()=>{
-    async function getData(){
-      setLoading(true)
-      const {data}  = await apiData('https://www.addressguru.in/api/cities')
-      setLoading(false)
-      setCitiesData(data)
-    }
-    getData()
+  const [city, setCity] = useState("Select City")
+  const getCity = (city)=>{
+    setCity(city)
   }
-  useEffect(()=>{
-    getCities()
-  },[])
-  const handlePress = (props)=>{
-    // console.log("city= ", props)
-  }
+
   return (
     <NavigationContainer >
       <Drawer.Navigator
@@ -55,11 +44,7 @@ export default function App() {
         },
         headerTitle:(props)=><LogoTitle {...props}/>,
         headerRight:(props)=>(
-          <TouchableOpacity onPress={()=>handlePress(props)}>
-            <View style={{paddingRight: 20}}>
-              <Text style={[s.f15,{color: '#2DCDFF'}]}>Select City</Text>
-            </View>
-          </TouchableOpacity>
+          <SelectCities city={city} setCity={setCity}/>
         ),
         headerStyle:{
           // backgroundColor: 'red',
