@@ -21,10 +21,14 @@ const ModalReport = (props) => {
   const handleSubmit =()=>{
     setModalVisible(false)
   }
+
   return (
     <Modal
       animationType='fade'
       transparent={true}
+      onRequestClose={()=>{
+        setModalVisible(false)
+      }}
       visible={modalVisible}
     >
       <View style={[styles.centeredView]}> 

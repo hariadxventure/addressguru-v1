@@ -29,6 +29,7 @@ import CarouselSlider from "../../components/CarouselSlider";
 import LoadingLarge from "../../components/LoadingLarge";
 import AboutUs from "../../components/AboutUs";
 import ReportBtn from "../../components/ReportBtn";
+import ClaimBtn from "../../components/ClaimBtn";
 
 const CommonLandingPage = ({ route }) => {
   const [loading, setLoading] = useState(false);
@@ -48,7 +49,6 @@ const CommonLandingPage = ({ route }) => {
   useEffect(() => {
     getListingDetails();
   }, []);
-  console.log("slug= ", route.params.slug)
 
   return (
     <>
@@ -109,14 +109,7 @@ const CommonLandingPage = ({ route }) => {
                 </View>
                 <CtaBtns data={listingData?.personals?.[0]} webLink={listingData?.web_link}/>
                 <ShareSec />
-                <TouchableOpacity>
-                  <View style={[s.row, s.alICenter, s.pd10,{justifyContent: 'flex-end'}]}>
-                      <Icon name="hand-o-right" color={'blue'} size={15}/>
-                    <Text style={[{paddingLeft: 5}]}>
-                        Claim This Business
-                    </Text>
-                  </View>
-                </TouchableOpacity>
+                <ClaimBtn title={listingData?.business_name} listingId={listingData?.id} userId={listingData?.user_id}/>
               </View>
             </View>
             <View style={[s.pd10]}>
