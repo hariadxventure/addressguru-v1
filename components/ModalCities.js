@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  KeyboardAvoidingView,
 } from "react-native";
 import React from "react";
 import { s } from "../styles/Global";
@@ -47,38 +48,40 @@ const ModalCities = ({ modalVisible, setModalVisible }) => {
     getCitiesData();
   }, []);
   return (
-    <Modal
-      animationType="fade"
-      transparent={true}
-      onRequestClose={() => {
-        setModalVisible(false);
-      }}
-      visible={modalVisible}
-    >
-      <View style={[styles.centeredView]}>
-        <View style={[styles.modalView]}>
-          <View style={[styles.header]}>
-            <View style={[s.row, s.alICenter,styles.top]}>
-              <TouchableOpacity onPress={() => setModalVisible(false)}>
-                <View style={[styles.BackBtn]}>
-                  <Icon name="long-arrow-left" size={35} color="gray" />
-                </View>
-              </TouchableOpacity>
-              <Text style={[s.f20, { width: "60%" }]}>Location</Text>
+    
+      <Modal
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => {
+          setModalVisible(false);
+        }}
+        visible={modalVisible}
+      >
+        <View style={[styles.centeredView]}>
+          <View style={[styles.modalView]}>
+            <View style={[styles.header]}>
+              <View style={[s.row, s.alICenter,styles.top]}>
+                <TouchableOpacity onPress={() => setModalVisible(false)}>
+                  <View style={[styles.BackBtn]}>
+                    <Icon name="long-arrow-left" size={35} color="gray" />
+                  </View>
+                </TouchableOpacity>
+                <Text style={[s.f20, { width: "60%" }]}>Location</Text>
+              </View>
+              <View style={[{ height: 53 }]}>
+                <CustomSearchBar style={{}} />
+              </View>
             </View>
-            <View style={[{ height: 53 }]}>
-              <CustomSearchBar style={{}} />
-            </View>
+            <FlatList
+              data={citiesData}
+              renderItem={({ item, index }) => <Single city={item} />}
+              onRefresh={() => getCitiesData()}
+              refreshing={refreshing}
+            />
           </View>
-          <FlatList
-            data={citiesData}
-            renderItem={({ item, index }) => <Single city={item} />}
-            onRefresh={() => getCitiesData()}
-            refreshing={refreshing}
-          />
         </View>
-      </View>
-    </Modal>
+      </Modal>
+
   );
 };
 

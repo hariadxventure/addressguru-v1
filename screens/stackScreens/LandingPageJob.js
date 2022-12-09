@@ -20,6 +20,7 @@ import LoadingLarge from "../../components/LoadingLarge";
 import ShareSec from "../../components/ShareSec";
 import CtaBtns from "../../components/CtaBtns";
 import AboutUs from "../../components/AboutUs";
+import ReportBtn from "../../components/ReportBtn";
 
 const LandingPageJob = ({ route }) => {
   const [loading, setLoading] = useState(false)
@@ -94,12 +95,7 @@ const LandingPageJob = ({ route }) => {
           <ShareSec/>
          </View>
           <View style={[s.row, s.sb, s.pdh5, {paddingVertical: 10}]}>
-              <TouchableOpacity>
-                <View style={[s.row]}>
-                  <Icon name="times-rectangle" size={20} color="red" />
-                  <Text style={[s.pdh5, {color: 'red'}]}>Report</Text>
-                </View>
-              </TouchableOpacity>
+              <ReportBtn/>
             <View>
               <Text style={[s.fwb, s.cgray]}>Ad Id: {jobData.user_id}</Text>
             </View>
@@ -119,6 +115,7 @@ const LandingPageJob = ({ route }) => {
               {jobData?.salary_to?(
                 <Text style={[s.f17, s.cgray ,s.fwb, {lineHeight: 25}]}>Salary to: {jobData?.salary_to}</Text>
               ):(null)}
+              {/* <Text style={[s.f17, s.cgray ,s.fwb, {lineHeight: 25}]}>Salary from: {jobData?.salary_from}</Text> */}
             </View>
             <View style={[s.row, s.sb]}>
               <View>
