@@ -9,13 +9,13 @@ import FilterScreen from '../screens/special/FilterScreen'
 import CustomSearchBar from './CustomSearchBar'
 const {width, height} = Dimensions.get('window')
 
-const CommonHeader = ({scrollY, menuUrl, isListing}) => {
+const CommonHeader = ({scrollY, menuUrl, hideFilter, placeholder}) => {
   const refRBSheet = useRef()
   return (
     <View style={[styles.container]}>
       <View style={[s.row]}>
-        <CustomSearchBar/>
-        {!isListing?(
+        <CustomSearchBar placeholder={placeholder}/>
+        {!hideFilter?(
         <TouchableOpacity style={[s.container, s.row, {flex: 1.3, paddingRight: 5}]} onPress={()=>refRBSheet.current.open()}>
           <View style={[s.container, s.row, s.pd10,{paddingLeft: 0}]} >
             <Icon name='filter' size={17} color='black' style={[]}/>

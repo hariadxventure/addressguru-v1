@@ -6,16 +6,18 @@ import Ad2 from "../../components/Ad2";
 import apiData from "../../methods/getApi";
 import CardJobsNew from "../../components/CardJobsNew";
 import CommonHeader from "../../components/CommonHeader";
+import { CityContext } from "../../App";
+import { useContext } from "react";
 
 const Jobs = (props) => {
   const [jobData, setJobData] = useState([])
   const [refreshing, setRefreshing] = useState(false)
   const [scrollY, setScrollY] = useState(0)
-
+  const {city} = useContext(CityContext)
   const getJobsData = ()=>{
     async function getData(){
       setRefreshing(true)
-      const {data} = await apiData("https://www.addressguru.in/api/jobs")
+      const {data} = await apiData("https://www.addressguru.in/api/jobs?city="+city)
       setRefreshing(false)
       setJobData(data?.records)
     }
@@ -23,25 +25,39 @@ const Jobs = (props) => {
   } 
   useEffect(()=>{
    getJobsData()
-  },[])
+  },[city])
  
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
       <View>
         <CommonHeader scrollY={scrollY} menuUrl="https://www.addressguru.in/api/job/categories"/>
       </View>
-      <FlatList
-        data={jobData}
-        renderItem={({item})=><CardJobsNew {...props} {...item}/>}
-        keyExtractor={item=>item.id}
-        onRefresh={()=>getJobsData()}
-        refreshing={refreshing}
-        contentContainerStyle={{
-          paddingBottom: 110,
-          paddingTop: 7,
-          alignItems: 'center'
-        }}
-      />
+      {jobData.length==0 && !refreshing?(
+         <View style={[ s.container, s.pdv10]}>
+         {city=="Select City"?(
+           <Text style={[s.f25, s.cgray]}>
+           Plese select a city first
+         </Text>
+         ):(
+           <Text style={[s.f25, s.cgray]}>
+           No data found
+         </Text>
+         )}
+       </View>
+      ):(
+        <FlatList
+          data={jobData}
+          renderItem={({item})=><CardJobsNew {...props} {...item}/>}
+          keyExtractor={item=>item.id}
+          onRefresh={()=>getJobsData()}
+          refreshing={refreshing}
+          contentContainerStyle={{
+            paddingBottom: 70,
+            paddingTop: 7,
+            alignItems: 'center'
+          }}
+        />
+      )}
       {/* <ScrollView onScroll={e=>{
         // setScrollY(e.nativeEvent.contentOffset.y)
         setScrollY(0)

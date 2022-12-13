@@ -6,6 +6,7 @@ import Search from '../stackScreens/Search'
 import ListingsPage from '../stackScreens/ListingsPage'
 import CommonLandingPage from '../stackScreens/CommonLandingPage'
 import CityPage from '../stackScreens/CityPage'
+import LandingPageMp from '../stackScreens/LandingPageMp'
 const Stack =  createNativeStackNavigator()
 const HomeStack = () => {
   return (
@@ -20,6 +21,7 @@ const HomeStack = () => {
       <Stack.Screen name='CityPage' component={CityPage}/>
       <Stack.Screen name='ListingsPage' component={ListingsPage}/>
       <Stack.Screen name='CommonLandingPage' component={CommonLandingPage}/>
+      <Stack.Screen name='LandingPageMp' component={LandingPageMp}/>
     </Stack.Navigator>
   )
 }

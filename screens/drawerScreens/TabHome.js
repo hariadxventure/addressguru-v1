@@ -76,7 +76,7 @@ const TabHome = () => {
         component={PostAdStack}
         options={{
           title: "PostAd",
-          tabBarIcon: () => <Icon name="plus" color="green" size={30}  style={{position: 'absolute', backgroundColor: 'white', borderRadius: 100, top: -25,padding: 15 ,paddingTop:10,}}/>,
+          tabBarIcon: () => <Icon name="plus" color="black" size={30}  style={{position: 'absolute', backgroundColor: 'orange', borderRadius: 100, top: -25,padding: 15 ,paddingTop:10,}}/>,
         }}
       />
     </Tab.Navigator>

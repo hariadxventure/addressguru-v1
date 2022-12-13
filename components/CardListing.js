@@ -41,7 +41,7 @@ const CardListing = (props) => {
                 { color: "#2D6A9D", fontWeight: "500" },
               ]}
             >
-              {name.length > 45 ? name.substring(0, 45) + "..." : name}
+              {name.length > 40 ? name.substring(0, 38) + "..." : name}
             </Text>
           </View>
         </TouchableOpacity>

@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CarouselMenu from "../../components/CarouselMenu";
@@ -10,22 +17,50 @@ import Ad2 from "../../components/Ad2";
 import Ad4 from "../../components/Ad4";
 import Ad3 from "../../components/Ad3";
 import CardMp2 from "../../components/CardMp2";
+import CardAd from "../../components/CardAd";
+import SecHeader from "../../components/subComponents/HomeScreen/SecHeader";
+import CardProduct from "../../components/CardProduct";
+import CustomSearchBar from "../../components/CustomSearchBar";
+import CommonHeader from "../../components/CommonHeader";
+import apiData from "../../methods/getApi";
+import { useEffect } from "react";
+import { useState } from "react";
+import { CityContext } from "../../App";
+import { useContext } from "react";
 const Home = (props) => {
+  const [prodData, setProdData] = useState([])
+  const [featuredData, setFeaturedData] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
+  const { city } = useContext(CityContext)
+  const getProducts = ()=>{
+    async function getData(){
+      setRefreshing(true)
+      const {data} = await apiData("https://www.addressguru.in/api/marketplace/products?city="+city)
+      setRefreshing(false)
+      setProdData(data?.records)
+    }
+    getData()
+  }
+  const getFeatured = ()=>{
+    async function getData(){
+      setRefreshing(true)
+      const {data} = await apiData("https://www.addressguru.in/api/marketplace/featured?city="+city)
+      setRefreshing(false)
+      setFeaturedData(data)
+    }
+    getData()
+  }
+
+  useEffect(()=>{
+    getProducts()
+    getFeatured()
+  },[city])
   return (
+    <>
+    <CommonHeader hideFilter={true} placeholder={"Search"}/>
     <ScrollView>
       <View style={styles.marketPlace1}>
-        <View style={styles.header}>
-          <Text style={{ fontSize: 18 }}>Popular in Dehradun</Text>
-          <Text style={{ color: "orange" }}>
-            See all
-            <Icon
-              name="angle-right"
-              size={20}
-              color="orange"
-              style={{ borderRadius: 50, padding: 5, marginLeft: 3 }}
-            />
-          </Text>
-        </View>
+        <SecHeader title={"Popular in Dehradun"}/>
         <View style={styles.mp1Container}>
           {dataMp1.map((item) => (
             <CardMP1 key={item.id} {...item} />
@@ -34,29 +69,41 @@ const Home = (props) => {
       </View>
       <View style={styles.sec2}>
         <View style={styles.carouselBg}></View>
-        <CarouselMenu {...props}/>
+        <CarouselMenu {...props} />
       </View>
-      <View style={[s.container, s.pdt10, s.pdb10]}>
-        <Ad1 />
+      <CardAd
+        imgSrc={require("../../assets/others/ad3.jpg")}
+        style={{ width: "100%" }}
+      />
+      <CardAd
+        imgSrc={require("../../assets/others/ad4.jpg")}
+        style={{ width: "100%" }}
+      />
+      <View style={[styles.card, s.pdv10,s.bgColWh, s.mv5]}>
+        <SecHeader title={"Marketplace"}/>
+        <CardAd
+          imgSrc={require("../../assets/others/ad5.jpg")}
+          style={{ width: "100%" }}
+        />
+        <ScrollView horizontal contentContainerStyle={[{ paddingRight: 90}]}>
+          {featuredData.slice(0,8).map((el,idx)=><CardProduct key={idx} {...el} {...props} style={{maxWidth: 180, minWidth:180 , marginHorizontal: 10, backgroundColor: '#F3F3F3'}} isFeatured={true}/>)}
+        </ScrollView>
+        {prodData.length != 0?(
+          <View style={[styles.featured, s.container, s.se ,s.row ,s.wrp]}>
+              {prodData.slice(0,4).map((el, idx)=><CardProduct key={idx} {...el} {...props}/>)}
+          </View>
+        ):(null)}
       </View>
-      <View style={[s.container, s.pdt10, s.pdb10]}>
-        <Ad2 />
-      </View>
-      <View style={styles.sec6}>
-        <Text>MarketPlace 2</Text>
-        <Ad3/>
-        <View>
-          <CardMp2/>
-          <CardMp2/>
-        </View>
-      </View>
-      <View style={[s.container, s.pd5]}>
-       <Ad4 />
-      </View>
+      <CardAd
+        imgSrc={require("../../assets/others/ad6.jpg")}
+        style={{ height: 250, width: "100%" }}
+      />
       <View style={s.pdb15}></View>
     </ScrollView>
+    </>
   );
 };
+
 const styles = StyleSheet.create({
   mp1Container: {
     display: "flex",
@@ -95,25 +142,20 @@ const styles = StyleSheet.create({
     height: 350,
     backgroundColor: "orange",
   },
-  sec3: {
-    backgroundColor: "green",
-    height: 500,
+  featured: {
+    borderTopColor: '#F3F3F3',
+    borderTopWidth: 1,
+
   },
-  sec4: {
-    backgroundColor: "yellow",
-    height: 200,
-  },
-  sec6: {
-    backgroundColor: "gray",
-    height: 300,
-  },
+  card: {
+    
+  }
 });
 
 export default Home;
 
-
 // ========================================================= //
-        // Designed and Developed by Hari Joshi, //
-                // contact- 7906519104, //
-        // email: mr.hariprasadjoshi@gmail.com //
+// Designed and Developed by Hari Joshi, //
+// contact- 7906519104, //
+// email: mr.hariprasadjoshi@gmail.com //
 // ========================================================== //

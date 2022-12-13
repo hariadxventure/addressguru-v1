@@ -29,7 +29,7 @@ export const CityContext = createContext();
 
 const Stack = createNativeStackNavigator();
 export default function App() {
-  const [city, setCity] = useState("Select City");
+  const [city, setCity] = useState("Dehradun");
 
   return (
     <CityContext.Provider value={{ city: city, setCity: setCity }}>
