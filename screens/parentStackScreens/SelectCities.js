@@ -19,24 +19,24 @@ import { CityContext } from "../../App";
 import { useContext } from "react";
 const { width, height } = Dimensions.get("window");
 
-const Single = ({ city, selected, navigation,setSelected }) => {
-  const {setCity} = useContext(CityContext)
+const Single = ({ cityName, selected, navigation,setSelected }) => {
+  const {city, setCity} = useContext(CityContext)
   const handleShow = ()=>{
-    setSelected(city)
+    setSelected(cityName)
     const timeId = setTimeout(() => {
       navigation.goBack()
     }, 10);
-    setCity(city)
+    setCity(cityName)
   }
   return (
     <>
-      {city != "" ? (
+      {cityName != "" ? (
         <TouchableOpacity onPress={() => handleShow()}>
           <View style={[s.row, s.alICenter, styles.city]}>
             <Text style={[s.f20, s.cgray, { minWidth: "80%", paddingTop: 5 }]}>
-              {city}
+              {cityName}
             </Text>
-            {selected == city ? (
+            {city == cityName ? (
               <Icon name="check" color={"green"} size={20} />
             ) : null}
           </View>
@@ -66,7 +66,7 @@ const SelectCities = (props) => {
   }, []);
 
   const renderItem = useCallback(({ item, index }) => (
-    <Single city={item} navigation={navigation} selected={selected} setSelected={setSelected} />
+    <Single cityName={item} navigation={navigation} selected={selected} setSelected={setSelected} />
   ))
   return (
     <SafeAreaView>

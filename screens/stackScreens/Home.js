@@ -54,7 +54,7 @@ const Home = (props) => {
   useEffect(()=>{
     getProducts()
     getFeatured()
-  },[city])
+  },[city, ])
   return (
     <>
     <CommonHeader hideFilter={true} placeholder={"Search"}/>
@@ -88,9 +88,9 @@ const Home = (props) => {
         <ScrollView horizontal contentContainerStyle={[{ paddingRight: 90}]}>
           {featuredData.slice(0,8).map((el,idx)=><CardProduct key={idx} {...el} {...props} style={{maxWidth: 180, minWidth:180 , marginHorizontal: 10, backgroundColor: '#F3F3F3'}} isFeatured={true}/>)}
         </ScrollView>
-        {prodData.length != 0?(
+        {prodData?.length != 0?(
           <View style={[styles.featured, s.container, s.se ,s.row ,s.wrp]}>
-              {prodData.slice(0,4).map((el, idx)=><CardProduct key={idx} {...el} {...props}/>)}
+              {prodData?.slice(0,4).map((el, idx)=><CardProduct key={idx} {...el} {...props}/>)}
           </View>
         ):(null)}
       </View>
