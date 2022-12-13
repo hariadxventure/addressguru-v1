@@ -7,6 +7,10 @@ import ListingsPage from '../stackScreens/ListingsPage'
 import CommonLandingPage from '../stackScreens/CommonLandingPage'
 import CityPage from '../stackScreens/CityPage'
 import LandingPageMp from '../stackScreens/LandingPageMp'
+import MarketPlace from '../stackScreens/MarketPlace'
+import Jobs from '../stackScreens/Jobs'
+import ToLet from '../stackScreens/ToLet'
+import PostAd from '../stackScreens/PostAd'
 const Stack =  createNativeStackNavigator()
 const HomeStack = () => {
   return (
@@ -22,11 +26,28 @@ const HomeStack = () => {
       <Stack.Screen name='ListingsPage' component={ListingsPage}/>
       <Stack.Screen name='CommonLandingPage' component={CommonLandingPage}/>
       <Stack.Screen name='LandingPageMp' component={LandingPageMp}/>
+      <Stack.Screen name='MarketPlace' component={MarketPlace}/>
+      <Stack.Screen name='Jobs' component={Jobs}/>
+      <Stack.Screen name='ToLet' component={ToLet}/>
+      <Stack.Screen name='PostAd' component={PostAd}/>
     </Stack.Navigator>
   )
 }
 
 export default HomeStack
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ========================================================= //
         // Designed and Developed by Hari Joshi, //

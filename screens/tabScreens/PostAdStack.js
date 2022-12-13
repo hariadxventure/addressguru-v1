@@ -13,7 +13,7 @@ const PostAdStack = () => {
       headerShown: false
       }}
     >
-      <Stack.Screen name='Home' component={PostAd}/>
+      <Stack.Screen name='PostAd' component={PostAd}/>
       <Stack.Screen name='Search' component={Search}/>
     </Stack.Navigator>
   )

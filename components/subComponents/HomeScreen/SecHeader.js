@@ -2,11 +2,18 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const SecHeader = ({ title }) => {
+const SecHeader = ({ title, handlePress, navigation, route, sendTo }) => {
+  const handlePressNew=()=>{
+    if(sendTo){
+      navigation.navigate(sendTo)
+    }else{
+      return
+    }
+  }
   return (
     <View style={styles.header}>
       <Text style={{ fontSize: 18 }}>{title}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>handlePressNew()}>
         <Text style={{ color: "orange" }}>
           See all
           <Icon

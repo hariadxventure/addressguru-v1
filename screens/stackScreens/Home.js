@@ -63,7 +63,7 @@ const Home = (props) => {
         <SecHeader title={"Popular in Dehradun"}/>
         <View style={styles.mp1Container}>
           {dataMp1.map((item) => (
-            <CardMP1 key={item.id} {...item} />
+            <CardMP1 key={item.id} {...item} {...props} />
           ))}
         </View>
       </View>
@@ -74,16 +74,21 @@ const Home = (props) => {
       <CardAd
         imgSrc={require("../../assets/others/ad3.jpg")}
         style={{ width: "100%" }}
+        sendTo={'PostAd'}
+        {...props}
       />
       <CardAd
         imgSrc={require("../../assets/others/ad4.jpg")}
         style={{ width: "100%" }}
+        {...props}
       />
       <View style={[styles.card, s.pdv10,s.bgColWh, s.mv5]}>
-        <SecHeader title={"Marketplace"}/>
+        <SecHeader title={"Marketplace"} sendTo="MarketPlace" {...props}/>
         <CardAd
           imgSrc={require("../../assets/others/ad5.jpg")}
           style={{ width: "100%" }}
+          sendTo={'PostAd'}
+          {...props}
         />
         <ScrollView horizontal contentContainerStyle={[{ paddingRight: 90}]}>
           {featuredData.slice(0,8).map((el,idx)=><CardProduct key={idx} {...el} {...props} style={{maxWidth: 180, minWidth:180 , marginHorizontal: 10, backgroundColor: '#F3F3F3'}} isFeatured={true}/>)}
@@ -97,6 +102,8 @@ const Home = (props) => {
       <CardAd
         imgSrc={require("../../assets/others/ad6.jpg")}
         style={{ height: 250, width: "100%" }}
+        sendTo={'Jobs'}
+        {...props}
       />
       <View style={s.pdb15}></View>
     </ScrollView>

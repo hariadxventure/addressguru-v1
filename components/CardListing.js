@@ -41,7 +41,7 @@ const CardListing = (props) => {
                 { color: "#2D6A9D", fontWeight: "500" },
               ]}
             >
-              {name.length > 40 ? name.substring(0, 38) + "..." : name}
+              {name.length > 40 ? name.substring(0, 38).toLowerCase() + "..." : name.charAt(0).toUpperCase()+name.slice(1).toLowerCase()}
             </Text>
           </View>
         </TouchableOpacity>
