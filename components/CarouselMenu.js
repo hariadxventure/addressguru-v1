@@ -34,8 +34,6 @@ const CarouselMenu = (props) => {
       <TouchableOpacity onPress={()=>handlePress(el)}>
         <View  style={styles.singleItem}>
          <Icon 
-          // name={el.icon.replace('fa-solid fa-microphone','microphone')}
-          // color={el.colors.replace('#0000', '#000000')} 
           name={el.icon}
           color={el.colors} 
           size={32} 
