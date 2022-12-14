@@ -26,15 +26,18 @@ const styles = StyleSheet.create({
     search: {
         padding: 7,
         paddingLeft: 40,
-        borderRadius: 20,
-        // borderWidth: 1,
-        // borderColor: 'black',
-        backgroundColor: '#d9dfe6'
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#F1F1F1',
+        elevation: 1,
+        // backgroundColor: '#d9dfe6'
+        backgroundColor: 'white'
     },
     searchIcon:{
       position: 'absolute',
       top: '40%',
-      left: 25
+      left: 25,
+      elevation: 2
     }
 })
 

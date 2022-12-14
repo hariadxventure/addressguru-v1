@@ -24,15 +24,13 @@ import SelectCityBtn from "./components/SelectCityBtn";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DrawerHome from "./screens/parentStackScreens/DrawerHome";
 import SelectCities from "./screens/parentStackScreens/SelectCities";
-import { createContext } from "react";
-export const CityContext = createContext();
-
+import CityContextProvider from "./context/CityContextProvider";
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [city, setCity] = useState("Dehradun");
 
   return (
-    <CityContext.Provider value={{ city: city, setCity: setCity }}>
+    <CityContextProvider >
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="DraweHome"
@@ -66,7 +64,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </CityContext.Provider>
+    </CityContextProvider>
   );
 }
 
@@ -78,6 +76,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+
+
+
+
+
+
+
+
+
 
 // ========================================================= //
 // Designed and Developed by Hari Joshi, //

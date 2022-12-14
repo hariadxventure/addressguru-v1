@@ -15,7 +15,7 @@ import CustomSearchBar from "../../components/CustomSearchBar";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { s } from "../../styles/Global";
 import { useCallback } from "react";
-import { CityContext } from "../../App";
+import { CityContext } from "../../context/CityContextProvider";
 import { useContext } from "react";
 const { width, height } = Dimensions.get("window");
 

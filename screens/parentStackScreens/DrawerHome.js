@@ -8,8 +8,8 @@ import Sidebar from '../drawerScreens/Sidebar'
 import TabHome from '../drawerScreens/TabHome'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { useEffect } from 'react'
-import { CityContext } from '../../App'
 import { useContext } from 'react'
+import { CityContext } from '../../context/CityContextProvider'
 
 const Drawer = createDrawerNavigator()
 const DrawerHome = (props) => {
@@ -31,7 +31,7 @@ const DrawerHome = (props) => {
         fontSize: 18,
         padding: 0
       },
-      headerTitle: (props)=><LogoTitle {...props}/>,
+      headerTitle: (localProps)=><LogoTitle {...localProps} {...props}/>,
       headerRight: (props)=><SelectCityBtn city={city} handlePress={handlePress} {...props}/>,
       headerStyle:{
         // backgroundColor: 'red',

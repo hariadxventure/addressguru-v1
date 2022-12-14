@@ -1,11 +1,16 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
-const LogoTitle = () => {
+const LogoTitle = (props) => {
+  const handlePress=()=>{
+   props.navigation.navigate('Home')
+  }
   return (
-    <View style={styles.logo}>
-      <Image style={styles.img} source={require("../assets/logo.png")} />
-    </View>
+    <TouchableOpacity onPress={handlePress}>
+      <View style={styles.logo}>
+        <Image style={styles.img} source={require("../assets/logo.png")} />
+      </View>
+    </TouchableOpacity>
   );
 };
 

@@ -11,12 +11,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import CarouselMenu from "../../components/CarouselMenu";
 import { dataMp1 } from "../../data/mp1Data";
 import CardMP1 from "../../components/CardMP1";
-import Ad1 from "../../components/Ad1";
 import { s } from "../../styles/Global";
-import Ad2 from "../../components/Ad2";
-import Ad4 from "../../components/Ad4";
-import Ad3 from "../../components/Ad3";
-import CardMp2 from "../../components/CardMp2";
 import CardAd from "../../components/CardAd";
 import SecHeader from "../../components/subComponents/HomeScreen/SecHeader";
 import CardProduct from "../../components/CardProduct";
@@ -25,7 +20,7 @@ import CommonHeader from "../../components/CommonHeader";
 import apiData from "../../methods/getApi";
 import { useEffect } from "react";
 import { useState } from "react";
-import { CityContext } from "../../App";
+import { CityContext } from "../../context/CityContextProvider";
 import { useContext } from "react";
 const Home = (props) => {
   const [prodData, setProdData] = useState([])
@@ -152,7 +147,6 @@ const styles = StyleSheet.create({
   featured: {
     borderTopColor: '#F3F3F3',
     borderTopWidth: 1,
-
   },
   card: {
     

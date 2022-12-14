@@ -6,12 +6,13 @@ import Ad2 from "../../components/Ad2";
 import apiData from "../../methods/getApi";
 import { productsData } from "../../data/ProductsData";
 import CommonHeader from "../../components/CommonHeader";
-import { CityContext } from "../../App";
+import { CityContext } from "../../context/CityContextProvider";
 import { useContext } from "react";
 import { useCallback } from "react";
 
 const MarketPlace = (props) => {
   const [prodData, setProdData] = useState(productsData.records)
+  const [featuredData, setFeaturedData] = useState([])
   const [refreshing, setRefreshing] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const {city} = useContext(CityContext)
@@ -25,15 +26,26 @@ const MarketPlace = (props) => {
     getData()
   }
 
+  const getFeatured = ()=>{
+    async function getData(){
+      setRefreshing(true)
+      const {data} = await apiData("https://www.addressguru.in/api/marketplace/featured?city="+city)
+      setRefreshing(false)
+      setFeaturedData(data)
+    }
+    getData()
+  }
+
   useEffect(()=>{
     getProducts()
+    getFeatured()
   },[city])
 
   const renderItem = useCallback(({item})=><CardProduct  {...item} {...props}/>)
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
       <View>
-        <CommonHeader scrollY={scrollY} menuUrl="https://www.addressguru.in/api/marketplace/categories"/>
+        <CommonHeader placeholder={"Search Products"} menuUrl="https://www.addressguru.in/api/marketplace/categories"/>
       </View>
       {prodData.length==0 && !refreshing?(
         <View style={[ s.container, s.pdv10]}>
@@ -48,6 +60,10 @@ const MarketPlace = (props) => {
         )}
       </View>
       ):(
+        <>
+        <View style={[ s.container, s.se ,s.row ,s.wrp,{justifyContent: 'flex-start', paddingLeft: 10}]}>
+          {featuredData?.slice(0,4).map((el, idx)=><CardProduct key={idx} {...el} {...props} isFeatured={true}/>)}
+        </View>
         <FlatList
           key={"_"}
           data={prodData}
@@ -59,6 +75,7 @@ const MarketPlace = (props) => {
           columnWrapperStyle={[s.se]}
           numColumns={2}
         />
+      </>
       )}
     </View>
   );

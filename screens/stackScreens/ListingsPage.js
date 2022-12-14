@@ -4,7 +4,7 @@ import apiData from '../../methods/getApi'
 import CardListing from '../../components/CardListing'
 import { ScrollView } from 'react-native-gesture-handler'
 import CommonHeader from '../../components/CommonHeader'
-import { CityContext } from '../../App'
+import { CityContext } from '../../context/CityContextProvider'
 import { useContext } from 'react'
 import { s } from '../../styles/Global'
 const ListingsPage = (props) => {

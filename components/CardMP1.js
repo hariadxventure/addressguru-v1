@@ -9,10 +9,6 @@ const CardMP1 = (props) => {
       navigation.navigate(sendTo,{
           catName: category
       })
-    // if(sendTo=="ListingPage"){
-    // }else{
-    //     return
-    // }
   }
   return (
     <TouchableOpacity onPress={()=>handlePress()}>

@@ -6,7 +6,7 @@ import Ad2 from "../../components/Ad2";
 import apiData from "../../methods/getApi";
 import CardJobsNew from "../../components/CardJobsNew";
 import CommonHeader from "../../components/CommonHeader";
-import { CityContext } from "../../App";
+import { CityContext } from "../../context/CityContextProvider";
 import { useContext } from "react";
 
 const Jobs = (props) => {
@@ -30,7 +30,7 @@ const Jobs = (props) => {
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
       <View>
-        <CommonHeader scrollY={scrollY} menuUrl="https://www.addressguru.in/api/job/categories"/>
+        <CommonHeader placeholder={"Search Jobs"} menuUrl="https://www.addressguru.in/api/job/categories"/>
       </View>
       {jobData.length==0 && !refreshing?(
          <View style={[ s.container, s.pdv10]}>
