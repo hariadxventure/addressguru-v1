@@ -19,6 +19,8 @@ const TabHome = () => {
         headerShown: false,
         tabBarStyle: { backgroundColor: "white", height: 60 },
         tabBarLabelStyle: { marginBottom: 5, fontSize:12 },
+        // tabBarActiveBackgroundColor: 'blue',
+        tabBarActiveTintColor: 'orange'
       }}
     >
       <Tab.Screen
@@ -26,7 +28,7 @@ const TabHome = () => {
         component={HomeStack}
         options={{
           title: "Home",
-          tabBarIcon: () => <Icon name="home" color="gray" size={24} />,
+          tabBarIcon: ({focused}) => <Icon name="home" color={focused?"orange":"gray"} size={24} />,
         }}
       />
       <Tab.Screen
@@ -34,7 +36,7 @@ const TabHome = () => {
         component={LeadsStack}
         options={{
           title: "Leads",
-          tabBarIcon: () => <Icon name="bell" color="gray" size={24} />,
+          tabBarIcon: ({focused}) => <Icon name="bell" color={focused?"orange":"gray"} size={24} />,
         }}
       />
       
@@ -50,8 +52,8 @@ const TabHome = () => {
             shadowOpacity: 0,
             borderBottomWidth: 0,
           },
-          tabBarIcon: () => (
-            <Icon name="shopping-cart" color="gray" size={24} />
+          tabBarIcon: ({focused}) => (
+            <Icon name="shopping-cart" color={focused?"orange":"gray"} size={24} />
           ),
         }}
       />
@@ -60,7 +62,7 @@ const TabHome = () => {
         component={JobsStack}
         options={{
           title: "Jobs",
-          tabBarIcon: () => <Icon name="search" color="gray" size={24} />,
+          tabBarIcon: ({focused}) => <Icon name="search" color={focused?"orange":"gray"} size={24} />,
         }}
       />
       <Tab.Screen
@@ -68,7 +70,7 @@ const TabHome = () => {
         component={ToLetStack}
         options={{
           title: "ToLet",
-          tabBarIcon: ()=><Icon name="home" color="gray" size={24}/>
+          tabBarIcon: ({focused})=><Icon name="home" color={focused?"orange":"gray"} size={24}/>
         }}
       />
       <Tab.Screen
