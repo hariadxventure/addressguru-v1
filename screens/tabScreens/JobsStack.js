@@ -2,12 +2,11 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Jobs from '../stackScreens/Jobs'
-import Search from '../stackScreens/SearchResults'
 import LandingPageJob from '../stackScreens/LandingPageJob'
+import SearchResults from '../stackScreens/SearchResults'
 
 const Stack = createNativeStackNavigator()
 const JobsStack = () => {
-
   return (
     <Stack.Navigator
     initialRouteName='Jobs'
@@ -17,7 +16,15 @@ const JobsStack = () => {
     >
       <Stack.Screen name='Jobs' component={Jobs}/>
       <Stack.Screen name='LandingPageJob' component={LandingPageJob}/>
-      <Stack.Screen name='Search' component={Search}/>
+      <Stack.Screen name='SearchPage' component={SearchResults}
+      options={{
+        headerShown: true,
+        headerTitleAlign: 'center',
+        headerTitle: "Search Results",
+        headerTintColor: "gray",
+        headerTitleStyle:{fontSize:17}
+      }}
+      />
     </Stack.Navigator>
   )
 }

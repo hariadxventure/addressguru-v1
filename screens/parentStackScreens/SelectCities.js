@@ -51,6 +51,8 @@ const SelectCities = (props) => {
   const [refreshing, setRefreshing] = useState(false);
   const [citiesData, setCitiesData] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [searchText, setSearchText] = useState("")
+  const [filteredCities, setFilteredCities] = useState([]);
 
   const getCitiesData = () => {
     async function getData() {
@@ -65,19 +67,28 @@ const SelectCities = (props) => {
     getCitiesData();
   }, []);
 
+  const showSearchResult = (text)=>{
+    setSearchText(text)
+    let filteredData = citiesData?.filter((item)=>item.includes(text))
+    setFilteredCities(filteredData)
+  }
+
   const renderItem = useCallback(({ item, index }) => (
     <Single cityName={item} navigation={navigation} selected={selected} setSelected={setSelected} />
   ))
   return (
     <SafeAreaView>
       <View style={[styles.search]}>
-        <CustomSearchBar style={{}}  placeholder="Search City"/>
+        <CustomSearchBar style={{}} isCitySearch={true}  placeholder="Search City" showSearchResult={showSearchResult} />
       </View>
       <FlatList
-        data={citiesData}
+        // data={citiesData}
+        data={filteredCities && filteredCities.length>0? filteredCities: citiesData}
         renderItem={renderItem}
         onRefresh={() => getCitiesData()}
         refreshing={refreshing}
+        initialNumToRender={15}
+        scrollTo
       />
     </SafeAreaView>
   );

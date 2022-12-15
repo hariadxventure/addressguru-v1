@@ -59,7 +59,7 @@ const CardJobsNew = (props) => {
             </View>
             <View>
               <Text style={[s.cgray, s.fwb, {}]}>
-                {company_name.substring(0, 32)}
+                {company_name?.substring(0, 32)}
               </Text>
             </View>
           </View>

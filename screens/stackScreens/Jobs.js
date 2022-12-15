@@ -12,8 +12,8 @@ import { useContext } from "react";
 const Jobs = (props) => {
   const [jobData, setJobData] = useState([])
   const [refreshing, setRefreshing] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
   const {city} = useContext(CityContext)
+
   const getJobsData = ()=>{
     async function getData(){
       setRefreshing(true)
@@ -26,14 +26,22 @@ const Jobs = (props) => {
   useEffect(()=>{
    getJobsData()
   },[city])
+
+  const handleSearch=(searchVal)=>{
+    props.navigation.navigate('SearchPage',{
+      screenName: "Jobs",
+      searchVal: searchVal
+    })
+  }
  
   return (
-    <View style={[{position:'relative', top:-scrollY}]}>
+    <View style={[{position:'relative'}]}>
       <View>
         <CommonHeader 
         placeholder={"Search Jobs"}
         menuUrl="https://www.addressguru.in/api/job/categories"
         screenName="Jobs"
+        handleSearch={handleSearch}
         />
       </View>
       {jobData.length==0 && !refreshing?(

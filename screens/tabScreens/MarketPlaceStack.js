@@ -16,12 +16,37 @@ const MarketPlaceStack = () => {
     >
       <Stack.Screen name='MarketPlace' component={MarketPlace}/>
       <Stack.Screen name='LandingPageMp' component={LandingPageMp}/>
-      <Stack.Screen name='SearchPage' component={SearchResults}/>
+      <Stack.Screen name='SearchPage' component={SearchResults}
+      options={{
+        headerShown: true,
+        headerTitleAlign: 'center',
+        headerTitle: "Search Results",
+        headerTintColor: "gray",
+        headerTitleStyle:{fontSize:17}
+      }}
+      />
     </Stack.Navigator>
   )
 }
 
 export default MarketPlaceStack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ========================================================= //
