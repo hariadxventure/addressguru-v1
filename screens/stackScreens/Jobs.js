@@ -30,7 +30,11 @@ const Jobs = (props) => {
   return (
     <View style={[{position:'relative', top:-scrollY}]}>
       <View>
-        <CommonHeader placeholder={"Search Jobs"} menuUrl="https://www.addressguru.in/api/job/categories"/>
+        <CommonHeader 
+        placeholder={"Search Jobs"}
+        menuUrl="https://www.addressguru.in/api/job/categories"
+        screenName="Jobs"
+        />
       </View>
       {jobData.length==0 && !refreshing?(
          <View style={[ s.container, s.pdv10]}>

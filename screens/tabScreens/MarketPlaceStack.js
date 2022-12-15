@@ -2,8 +2,8 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MarketPlace from '../stackScreens/MarketPlace'
-import Search from '../stackScreens/Search'
 import LandingPageMp from '../stackScreens/LandingPageMp'
+import SearchResults from '../stackScreens/SearchResults'
 
 const Stack = createNativeStackNavigator()
 const MarketPlaceStack = () => {
@@ -16,7 +16,7 @@ const MarketPlaceStack = () => {
     >
       <Stack.Screen name='MarketPlace' component={MarketPlace}/>
       <Stack.Screen name='LandingPageMp' component={LandingPageMp}/>
-      <Stack.Screen name='Search' component={Search}/>
+      <Stack.Screen name='SearchPage' component={SearchResults}/>
     </Stack.Navigator>
   )
 }

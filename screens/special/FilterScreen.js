@@ -7,9 +7,13 @@ import FilterCard from '../../components/filterScreen/FilterCard'
 import { jobsCategory } from '../../data/jobsCategory'
 import apiData from '../../methods/getApi'
 
-const FilterScren = ({closeSheet, menuUrl}) => {
+const FilterScreen = ({closeSheet, menuUrl}) => {
   const [loading, setLoading] = useState(false)
   const [cat, setCat]= useState([])
+
+  const handlePress=()=>{
+    return
+  }
   useEffect(()=>{
     async function getData() {
       setLoading(true)
@@ -47,12 +51,12 @@ const FilterScren = ({closeSheet, menuUrl}) => {
             </View>
           </View>
           <View style={[{paddingTop: 10}]}>
-            <Text style={[s.f18, s.cgray]}>Sort by Category</Text>
+            <Text style={[s.f18, s.cgray]}>Filter by Category</Text>
             <View style={[s.pd5, s.row, s.wrp]}>
               {loading?(<View style={[s.container, {height: 100, width: '100%'}]}>
                 <ActivityIndicator/>                
               </View>):(
-                cat.map(item=><FilterCard key={item.id} title={item.name} />))
+                cat.map(item=><FilterCard key={item.id} title={item.name} handlePress={handlePress}/>))
               }
             </View>
           </View>
@@ -69,4 +73,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default FilterScren
+export default FilterScreen

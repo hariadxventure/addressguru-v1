@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { s } from '../../styles/Global'
 
-const FilterCard = ({title}) => {
+const FilterCard = ({title, handlePress}) => {
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={handlePress}>
       <View style={[styles.container]}>
         <Text style={[s.cgray]}>{title}</Text>
       </View>

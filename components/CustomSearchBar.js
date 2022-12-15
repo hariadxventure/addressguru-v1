@@ -2,15 +2,19 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-const CustomSearchBar = ({placeholder}) => {
+const CustomSearchBar = ({placeholder, handleSearch}) => {
   const [searchVal, setSearchVal] = useState("")
+  const handleSearchNew = (searchVal)=>{
+    handleSearch(searchVal)
+  }
   return (
     <View style={[styles.container]}>
       <TextInput
         value={searchVal}
         placeholder= {placeholder}
         onChangeText={setSearchVal}
-        onSubmitEditing={()=>console.log("first")}
+        // onSubmitEditing={()=>handleSearchNew(searchVal)}
+        onSubmitEditing={()=>handleSearch(searchVal)}
         style={[styles.search]}
       />
       <Icon name='search' color="black" size={18} style={[styles.searchIcon]}/>

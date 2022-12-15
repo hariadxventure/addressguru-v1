@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Leads from '../stackScreens/Leads'
-import Search from '../stackScreens/Search'
+import Search from '../stackScreens/SearchResults'
  
 const Stack = createNativeStackNavigator()
 const LeadsStack = () => {

@@ -52,7 +52,7 @@ const Home = (props) => {
   },[city, ])
   return (
     <>
-    <CommonHeader hideFilter={true} placeholder={"Search"}/>
+    <CommonHeader hideFilter={true} placeholder={"Search"} screenName="Home"/>
     <ScrollView>
       <View style={styles.marketPlace1}>
         <SecHeader title={"Popular in Dehradun"}/>

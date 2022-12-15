@@ -25,30 +25,6 @@ const MarketPlace = (props) => {
   const [scrollY, setScrollY] = useState(0);
   const { city } = useContext(CityContext);
 
-  // const getProducts = () => {
-  //   async function getData() {
-  //     setRefreshing(true);
-  //     const { data } = await apiData(
-  //       "https://www.addressguru.in/api/marketplace/products?city=" + city
-  //     );
-  //     setRefreshing(false);
-  //     setProdData(data?.records);
-  //   }
-  //   getData();
-  // };
-
-  // const getFeatured = () => {
-  //   async function getData() {
-  //     setRefreshing(true);
-  //     const { data } = await apiData(
-  //       "https://www.addressguru.in/api/marketplace/featured?city=" + city
-  //     );
-  //     setRefreshing(false);
-  //     setFeaturedData(data);
-  //   }
-  //   getData();
-  // };
-
   const getAllData = () => {
     async function getData() {
       let arr1 = [];
@@ -84,9 +60,14 @@ const MarketPlace = (props) => {
     getData();
   };
 
+  const handleSearch=(searchVal)=>{
+    props.navigation.navigate('SearchPage',{
+      screenName: "MarketPlace",
+      searchVal: searchVal
+    })
+  }
+
   useEffect(() => {
-    // getProducts();
-    // getFeatured();
     getAllData();
   }, [city]);
 
@@ -105,6 +86,8 @@ const MarketPlace = (props) => {
         <CommonHeader
           placeholder={"Search Products"}
           menuUrl="https://www.addressguru.in/api/marketplace/categories"
+          screenName="MarketPlace"
+          handleSearch={handleSearch}
         />
       </View>
       {newData.length == 0 && !refreshing ? (
