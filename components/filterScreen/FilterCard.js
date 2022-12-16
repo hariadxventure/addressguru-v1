@@ -3,7 +3,7 @@ import React from 'react'
 import { s } from '../../styles/Global'
 import { useEffect } from 'react'
 
-const FilterCard = ({id,title, closeSheet, sortOrder, setSortOrder, activeCat, setActiveCat, isTime, isSort, isCat}) => {
+const FilterCard = ({screenName ,id,title, closeSheet, sortOrder, setSortOrder, activeCat, setActiveCat, isTime, isSort, isCat}) => {
 
   const handlePress = (title)=>{
     if(title=="low to high"){

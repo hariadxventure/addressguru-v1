@@ -92,7 +92,7 @@ const MarketPlace = (props) => {
     return (
       <View style={[s.row ,s.sb,s.wrp, { width: "100%" }]}>
         {item.map((el, idx) => (
-          <CardProduct key={idx} {...el} {...props} />
+          <CardProduct key={idx} {...el} {...props} activeCat={activeCat}/>
         ))}
       </View>
     );

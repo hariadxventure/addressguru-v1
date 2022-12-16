@@ -5,12 +5,13 @@ import calcTime from "../methods/calcTime";
 import apiData from "../methods/getApi";
 
 const CardProduct = (props) => {
-  const {id, images, title, amount, city, state, created_at, route, navigation, isFeatured }= props
+  const {id, images, title, amount, city, state, created_at, route, navigation, isFeatured, activeCat }= props
   const time_diff = calcTime(created_at)
 
   const handlePress=()=>{
     navigation.navigate('LandingPageMp',{
       id: id,
+      activeCat: activeCat
     })
   }
   return (

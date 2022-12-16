@@ -21,7 +21,8 @@ const FilterScreen = ({
   setActiveCat,
   categories,
   activeCat,
-  sortOrder
+  sortOrder,
+  screenName
 }) => {
   return (
     <View style={[styles.container, { height: "100%" }]}>
@@ -46,11 +47,25 @@ const FilterScreen = ({
                 isTime={true}
                 closeSheet={closeSheet}
                 isCat={false}
+                screenName={screenName}
               />
             ))}
           </View>
           <View style={[{ paddingTop: 10 }]}>
-            <Text style={[s.f18, s.cgray]}>Sort by Price</Text>
+            
+              {screenName=="MarketPlace"?(
+                <Text style={[s.f18, s.cgray]}>
+                  Sort by Price
+                </Text>
+              ):screenName=="Jobs"?(
+                <Text style={[s.f18, s.cgray]}>
+                  Sort by Salary
+                </Text>
+              ):(
+                <Text style={[s.f18, s.cgray]}>
+                  Sort by just like that
+                </Text>
+              )}
             <View style={[s.pd5, s.row, s.wrp]}>
               <FilterCard
                 title={"low to high"}
@@ -60,6 +75,7 @@ const FilterScreen = ({
                 isSort={true}
                 isCat={false}
                 sortOrder= {sortOrder}
+                screenName={screenName}
                 />
               <FilterCard
                 title={"high to low"}
@@ -69,6 +85,7 @@ const FilterScreen = ({
                 isCat={false}
                 isSort={true}
                 sortOrder= {sortOrder}
+                screenName={screenName}
               />
             </View>
           </View>
@@ -77,10 +94,12 @@ const FilterScreen = ({
             <View style={[s.pd5, s.row, s.wrp]}>
               <FilterCard
                 title={"All"}
+                id="All"
                 setActiveCat={setActiveCat}
                 closeSheet={closeSheet}
                 isCat={true}
                 activeCat={activeCat}
+                screenName={screenName}
               />
               {categories.map((item) => (
                 <FilterCard
@@ -91,6 +110,7 @@ const FilterScreen = ({
                   closeSheet={closeSheet}
                   isCat={true}
                   activeCat={activeCat}
+                  screenName={screenName}
                 />
               ))}
             </View>

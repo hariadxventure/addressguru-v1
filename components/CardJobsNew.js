@@ -79,7 +79,7 @@ const CardJobsNew = (props) => {
             </View>
             <View>
               <Text style={[s.cgray]}>
-              ₹{salary_from}{" "}-{" "}₹{salary_to}/<Text style={{fontSize: 8, fontWeight: 'bold'}}>Monthly</Text>
+              ₹{salary_from?.substring(0,6)}{" "}-{" "}₹{salary_to?.substring(0,6)}/<Text style={{fontSize: 8, fontWeight: 'bold'}}>Monthly</Text>
               </Text>
             </View>
           </View>

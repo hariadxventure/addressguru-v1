@@ -59,6 +59,7 @@ const CommonHeader = (props) => {
           categories={categories}
           activeCat={activeCat}
           sortOrder={sortOrder}
+          screenName={screenName}
         />
       </RBSheet>
     </View>

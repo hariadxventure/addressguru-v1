@@ -11,13 +11,22 @@ import { useContext } from "react";
 
 const Jobs = (props) => {
   const [jobData, setJobData] = useState([])
+  const [sortOrder, setSortOrder] = useState("DESC")
+  const [activeCat, setActiveCat] = useState("All")
+  const [categories, setCategories] = useState([])
   const [refreshing, setRefreshing] = useState(false)
   const {city} = useContext(CityContext)
 
   const getJobsData = ()=>{
     async function getData(){
       setRefreshing(true)
-      const {data} = await apiData("https://www.addressguru.in/api/jobs?city="+city)
+      let url1 = ""
+      if(activeCat=="All"){
+        url1 = "https://www.addressguru.in/api/jobs?city="+city
+      }else{
+        url1 = "https://www.addressguru.in/api/jobs?city="+city+"&category="+activeCat+"&sort=amount&order="+sortOrder
+      }
+      const {data} = await apiData(url1)
       setRefreshing(false)
       setJobData(data?.records)
     }
@@ -25,7 +34,15 @@ const Jobs = (props) => {
   } 
   useEffect(()=>{
    getJobsData()
-  },[city])
+  },[city, sortOrder, activeCat])
+
+  useEffect(()=>{
+    const getCategoriesData = async()=>{
+      const {data} = await apiData("https://www.addressguru.in/api/job/categories")
+      setCategories(data)
+    }
+    getCategoriesData()
+  },[])
 
   const handleSearch=(searchVal)=>{
     props.navigation.navigate('SearchPage',{
@@ -42,6 +59,11 @@ const Jobs = (props) => {
         menuUrl="https://www.addressguru.in/api/job/categories"
         screenName="Jobs"
         handleSearch={handleSearch}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+        activeCat={activeCat}
+        setActiveCat={setActiveCat}
+        categories={categories}
         />
       </View>
       {jobData.length==0 && !refreshing?(
