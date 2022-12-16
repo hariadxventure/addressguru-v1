@@ -1,12 +1,26 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { s } from '../../styles/Global'
+import { useEffect } from 'react'
 
-const FilterCard = ({title, handlePress}) => {
+const FilterCard = ({id,title, closeSheet, sortOrder, setSortOrder, activeCat, setActiveCat, isTime, isSort, isCat}) => {
+
+  const handlePress = (title)=>{
+    if(title=="low to high"){
+      setSortOrder("ASC")
+    }
+    if(title=="high to low"){
+      setSortOrder("DESC")
+    }
+    if(isCat){
+      setActiveCat(id)
+    } 
+    closeSheet()
+  }
 
   return (
-    <TouchableOpacity onPress={handlePress}>
-      <View style={[styles.container]}>
+    <TouchableOpacity onPress={()=>handlePress(title)}>
+      <View style={(isCat && activeCat==id) ||(isSort && sortOrder==id)?[styles.container, {borderColor: 'orange', borderWidth: 1}]:[styles.container]}>
         <Text style={[s.cgray]}>{title}</Text>
       </View>
     </TouchableOpacity>

@@ -5,7 +5,6 @@ import Home from '../stackScreens/Home'
 import Search from '../stackScreens/SearchResults'
 import ListingsPage from '../stackScreens/ListingsPage'
 import CommonLandingPage from '../stackScreens/CommonLandingPage'
-import CityPage from '../stackScreens/CityPage'
 import LandingPageMp from '../stackScreens/LandingPageMp'
 import MarketPlace from '../stackScreens/MarketPlace'
 import Jobs from '../stackScreens/Jobs'
@@ -22,7 +21,6 @@ const HomeStack = () => {
     >
       <Stack.Screen name='Home' component={Home}/>
       <Stack.Screen name='Search' component={Search}/>
-      <Stack.Screen name='CityPage' component={CityPage}/>
       <Stack.Screen name='ListingsPage' component={ListingsPage}/>
       <Stack.Screen name='CommonLandingPage' component={CommonLandingPage}/>
       <Stack.Screen name='LandingPageMp' component={LandingPageMp}/>

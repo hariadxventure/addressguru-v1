@@ -18,28 +18,31 @@ import { useContext } from "react";
 import { useCallback } from "react";
 
 const MarketPlace = (props) => {
-  const [prodData, setProdData] = useState(productsData.records);
-  const [featuredData, setFeaturedData] = useState([]);
   const [newData, setNewData] = useState([]);
+  const [sortOrder, setSortOrder] = useState("DESC")
+  const [activeCat, setActiveCat] = useState("All")
+  const [categories, setCategories] = useState([])
   const [refreshing, setRefreshing] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const { city } = useContext(CityContext);
 
   const getAllData = () => {
     async function getData() {
+      setRefreshing(true);
       let arr1 = [];
       let arr2 = [];
       let arr = [];
-      setRefreshing(true);
-      const { data: data1 } = await apiData(
-        "https://www.addressguru.in/api/marketplace/featured?city=" + city
-      );
+      let url1 = "https://www.addressguru.in/api/marketplace/featured?city=" + city
+      let url2 = ""
+      if(activeCat=="All"){
+        url2 = "https://www.addressguru.in/api/marketplace/products?city="+city
+      }else{
+        url2 = "https://www.addressguru.in/api/marketplace/products?city="+city+"&category="+activeCat+"&sort=amount&order="+sortOrder
+      }
+      const { data: data1 } = await apiData(url1);
       arr1.push(...data1);
       arr1 = arr1.map((obj) => ({ ...obj, isFeatured: true }));
 
-      const { data: data2 } = await apiData(
-        "https://www.addressguru.in/api/marketplace/products?city=" + city
-      );
+      const { data: data2 } = await apiData(url2);
       arr2.push(...data2?.records);
 
       while (arr1.length + arr2.length) {
@@ -60,6 +63,9 @@ const MarketPlace = (props) => {
     getData();
   };
 
+  
+
+
   const handleSearch=(searchVal)=>{
     props.navigation.navigate('SearchPage',{
       screenName: "MarketPlace",
@@ -69,7 +75,18 @@ const MarketPlace = (props) => {
 
   useEffect(() => {
     getAllData();
-  }, [city]);
+  }, [city, sortOrder, activeCat]);
+
+  useEffect(()=>{
+    const getCategoriesData = async()=>{
+      const {data} = await apiData("https://www.addressguru.in/api/marketplace/categories")
+      setCategories(data)
+    }
+    getCategoriesData()
+  },[])
+
+  // console.log("category= ",activeCat)
+  // console.log("sort= ",sortOrder)
 
   const renderItem = useCallback(({ item, index }) => {
     return (
@@ -81,13 +98,18 @@ const MarketPlace = (props) => {
     );
   });
   return (
-    <View style={[{ position: "relative", top: -scrollY }]}>
+    <View style={[{ position: "relative" }]}>
       <View>
         <CommonHeader
           placeholder={"Search Products"}
           menuUrl="https://www.addressguru.in/api/marketplace/categories"
           screenName="MarketPlace"
           handleSearch={handleSearch}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
+          activeCat={activeCat}
+          setActiveCat={setActiveCat}
+          categories={categories}
         />
       </View>
       {newData.length == 0 && !refreshing ? (

@@ -9,7 +9,8 @@ import FilterScreen from '../screens/special/FilterScreen'
 import CustomSearchBar from './CustomSearchBar'
 const {width, height} = Dimensions.get('window')
 
-const CommonHeader = ({screenName, handleSearch, menuUrl, hideFilter, placeholder}) => {
+const CommonHeader = (props) => {
+  const {screenName, handleSearch, menuUrl, hideFilter, placeholder, sortOrder,setSortOrder, activeCat ,setActiveCat, categories} = props
   const refRBSheet = useRef()  
   
   return (
@@ -53,6 +54,11 @@ const CommonHeader = ({screenName, handleSearch, menuUrl, hideFilter, placeholde
           closeSheet = {()=>{
             refRBSheet.current.close()
           }}
+          setSortOrder={setSortOrder}
+          setActiveCat={setActiveCat}
+          categories={categories}
+          activeCat={activeCat}
+          sortOrder={sortOrder}
         />
       </RBSheet>
     </View>
