@@ -29,14 +29,14 @@ const ListingsPage = (props) => {
     <View >
       <CommonHeader isListing={true} placeholder={"Search here.."} />
       {listingData.length==0 && !refreshing?(
-        <View style={[ s.container, s.pdv10]}>
+        <View style={[ s.container, s.pdv10, {paddingTop: 35} ]}>
           {city=="Select City"?(
             <Text style={[s.f25, s.cgray]}>
             Plese select a city first
           </Text>
           ):(
-            <Text style={[s.f25, s.cgray]}>
-            No data found
+            <Text style={[s.f25, s.cgray, s.tc]}>
+            No results found for {route.params.catName} in city {city}
           </Text>
           )}
         </View>

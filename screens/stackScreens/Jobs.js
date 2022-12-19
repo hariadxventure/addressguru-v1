@@ -73,8 +73,8 @@ const Jobs = (props) => {
            Plese select a city first
          </Text>
          ):(
-           <Text style={[s.f25, s.cgray]}>
-           No data found
+           <Text style={[s.f25, s.cgray, s.tc]}>
+           No jobs found in city {city}
          </Text>
          )}
        </View>

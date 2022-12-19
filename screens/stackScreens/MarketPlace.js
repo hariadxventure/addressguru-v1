@@ -117,7 +117,7 @@ const MarketPlace = (props) => {
           {city == "Select City" ? (
             <Text style={[s.f25, s.cgray]}>Plese select a city first</Text>
           ) : (
-            <Text style={[s.f25, s.cgray]}>No data found</Text>
+            <Text style={[s.f25, s.cgray, s.tc]}>No products found in city {city}</Text>
           )}
         </View>
       ) : (

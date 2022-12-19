@@ -59,7 +59,7 @@ const ModalClaim = (props) => {
       <View style={[styles.centeredView]}>
         <View style={[styles.modalView]}>
           <View style={[s.row, s.alICenter, s.sb, s.pdv5]}>
-            <Text style={[s.fwb, s.cgray, s.f15]}>Claim OwnerShip:- </Text>
+            <Text style={[s.fwb, s.cgray, s.f15]}>Claim OwnerShip </Text>
             <TouchableOpacity onPress={() => setModalVisible(false)}>
               <View style={[styles.closeBtn]}>
                 <Icon name="times" size={20} color="gray" />
@@ -67,7 +67,7 @@ const ModalClaim = (props) => {
             </TouchableOpacity>
           </View>
           <View style={[s.container, s.pdb10]}>
-            <Text style={[s.f17, s.cgray]}>
+            <Text style={[s.f17, s.cgray, s.fwb]}>
               {title?.length > 50 ? title?.substring(0, 48) + "..." : title}
             </Text>
           </View>
