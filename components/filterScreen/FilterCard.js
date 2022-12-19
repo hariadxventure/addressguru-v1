@@ -6,6 +6,9 @@ import { useEffect } from 'react'
 const FilterCard = ({screenName ,id,title, closeSheet, sortOrder, setSortOrder, activeCat, setActiveCat, isTime, isSort, isCat}) => {
 
   const handlePress = (title)=>{
+    if(screenName=="Home"){
+      return
+    }
     if(title=="low to high"){
       setSortOrder("ASC")
     }

@@ -2,9 +2,12 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-const CustomSearchBar = ({placeholder, handleSearch, showSearchResult, isCitySearch}) => {
+const CustomSearchBar = ({screenName ,placeholder, handleSearch, showSearchResult, isCitySearch}) => {
   const [searchVal, setSearchVal] = useState("")
   const handleSearchNew = (searchVal)=>{
+    if(screenName=="Home"){
+      return
+    }
     if(!isCitySearch){
       handleSearch(searchVal)
     }else{

@@ -27,7 +27,7 @@ const ListingsPage = (props) => {
 
   return (
     <View >
-      <CommonHeader isListing={true}/>
+      <CommonHeader isListing={true} placeholder={"Search here.."} />
       {listingData.length==0 && !refreshing?(
         <View style={[ s.container, s.pdv10]}>
           {city=="Select City"?(

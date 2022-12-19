@@ -16,7 +16,7 @@ const CommonHeader = (props) => {
   return (
     <View style={[styles.container]}>
       <View style={[s.row]}>
-        <CustomSearchBar placeholder={placeholder} handleSearch={handleSearch}/>
+        <CustomSearchBar placeholder={placeholder} handleSearch={handleSearch} screenName={screenName}/>
         {!hideFilter?(
         <TouchableOpacity style={[s.container, s.row, {flex: 1.3, paddingRight: 5}]} onPress={()=>refRBSheet.current.open()}>
           <View style={[s.container, s.row, s.pd10,{paddingLeft: 0}]} >
